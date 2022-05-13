@@ -2,7 +2,7 @@ package services;
 
 import interfaces.Mentor;
 
-public class FulTimeMentor implements Mentor {
+public class FullTimeMentor implements Mentor {
 
     @Override
     public void createAccount(){
