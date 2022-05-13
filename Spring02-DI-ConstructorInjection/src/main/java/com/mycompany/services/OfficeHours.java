@@ -4,7 +4,7 @@ import com.mycompany.interfaces.ExtraSessions;
 
 public class OfficeHours implements ExtraSessions {
     @Override
-    public void getHours(){
-        System.out.println("weekly extra hours : 10");
+    public int getHours(){
+      return 10;
     }
 }
