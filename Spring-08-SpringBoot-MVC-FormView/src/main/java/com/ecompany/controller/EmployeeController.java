@@ -12,26 +12,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/mentor")
+@RequestMapping("/employee")
 public class EmployeeController {
 
     @GetMapping("/register")
-    public String showForm(Model model){
-
-        model.addAttribute("mentor", new Employee());
-
-        List<String>batchList = Arrays.asList("B7","B9","B10","B11","B17","B19","B20","B23");
-        model.addAttribute("batchList", batchList);
-
-        return "/mentor/mentor-register";
-
-    }
-
-    @PostMapping("confirm")
-    public String submitForm(@ModelAttribute("mentor") Employee mentor){
-
-        System.out.println(mentor.toString());
-        return "mentor/confirm";
+    public String employeeCreate(){
+        return "/employee/employee-create";
     }
 
 

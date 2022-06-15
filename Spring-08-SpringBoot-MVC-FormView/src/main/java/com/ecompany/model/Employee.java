@@ -1,7 +1,7 @@
 package com.ecompany.model;
 
 
-import com.ecompany.enums.Gender;
+
 import lombok.*;
 
 @NoArgsConstructor
@@ -14,10 +14,13 @@ public class Employee {
 
     private String firstName;
     private String lastName;
+    private String birthDay;
     private String email;
-    private Gender gender;
-    private boolean graduated;
-    private String batch;
-    private String company;
+    private String password;
+    private String address;
+    private String address2;
+    private String city;
+    private String state;
+    private String zipCode;
 
 }
