@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,45 +15,59 @@
       <div class="card">
           <h2 class="card-header p-5 bg-info" style="color:white">Welcome to Employee Registration!</h2>
           <div class="card-body">
-        <form>
+        <form th:object="${employee}">
         <div class="form-row">
             <div class="form-group col">
                 <label for="inputfirstName">First Name</label>
-                <input type="text" class="form-control" id="inputfirstName" placeholder="First Name">
+                <input type="text" class="form-control" id="inputfirstName" th:field="*{firstName}" placeholder="First Name">
             </div>
             <div class="form-group col">
                 <label for="inputLastName">Last Name</label>
-                <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+                <input type="text" class="form-control" id="inputLastName" th:field="*{lastName}" placeholder="Last Name">
             </div>
             <div class="form-group col">
                 <label for="inputBirthDay">Password</label>
-                <input type="date" class="form-control" id="inputBirthDay" placeholder="Birth Day">
+                <input type="date" class="form-control" id="inputBirthDay" th:field="*{birthday}" placeholder="Birth Day">
             </div>
         </div>
 
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" th:field="*{email}" placeholder="Email">
+                </div>
+                <div class="form-group col">
+                    <label for="inputPassword">Password</label>
+                    <input type="text" class="form-control" id="inputPassword" th:field="*{password}" placeholder="Password">
+                </div>
+
+            </div>
+
+
+
         <div class="form-group">
             <label for="inputAddress">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <input type="text" class="form-control" id="inputAddress" th:field="*{address}" placeholder="1234 Main St">
         </div>
         <div class="form-group">
             <label for="inputAddress2">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            <input type="text" class="form-control" id="inputAddress2"  th:field="*{address2}" placeholder="Apartment, studio, or floor">
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity">
+                <input type="text" class="form-control" th:field="*{city}" id="inputCity">
             </div>
             <div class="form-group col-md-4">
                 <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
+                <select id="inputState" th:field="*{state}" class="form-control">
+                    <option th:each="theSate : ${stateList}" th:value="theSate" th:text="theSate">Choose...</option>
                     <option>...</option>
                 </select>
             </div>
             <div class="form-group col-md-2">
                 <label for="inputZip">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
+                <input type="text" class="form-control" th:field="*{zipCode}" id="inputZip">
             </div>
         </div>
         <div class="form-group">

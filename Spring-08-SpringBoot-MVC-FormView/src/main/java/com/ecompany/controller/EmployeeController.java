@@ -1,5 +1,6 @@
 package com.ecompany.controller;
 
+import com.ecompany.datagenerator.DataGenerator;
 import com.ecompany.model.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,10 @@ import java.util.List;
 public class EmployeeController {
 
     @GetMapping("/register")
-    public String employeeCreate(){
+    public String employeeCreate(Model model){
+        model.addAttribute("employee", new Employee());
+        model.addAttribute("stateList", DataGenerator.getStateList());
+
         return "/employee/employee-create";
     }
 
