@@ -5,9 +5,11 @@ import java.util.List;
 
 public class DataGenerator {
 
+
     public static List<String> getStateList(){
 
-        List<String>stateList = Arrays.asList(
+        List<String>stateList=Arrays.asList(
+
                 "Alabama",
                 "Alaska",
                 "Arizona",
@@ -54,10 +56,10 @@ public class DataGenerator {
                 "Washington",
                 "West Virginia",
                 "Wisconsin",
-                "Wyoming"
-                );
+                "Wyoming");
 
         return stateList;
 
     }
 }
+
