@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/JavaMySpring.iml" filepath="$PROJECT_DIR$/.idea/JavaMySpring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring00-LooselyCoupled/Spring00-LooselyCoupled.iml" filepath="$PROJECT_DIR$/Spring00-LooselyCoupled/Spring00-LooselyCoupled.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring00_tightlyCoupled/Spring00_tightlyCoupled.iml" filepath="$PROJECT_DIR$/Spring00_tightlyCoupled/Spring00_tightlyCoupled.iml" />
+    </modules>
+  </component>
+</project>

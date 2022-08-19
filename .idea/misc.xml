@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Spring01_SpringContainer/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring02-DI-ConstructorInjection/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring02-DI-SetterInjection/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring03-BeanScope-Singleton-Prototype/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring04-BeanLifeCycle/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring05-JavaAnnotations-Autowired/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring05-JavaAnnotation-Qualifier/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring08-MyCompanyLab/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring07-SpringBoot-Ioc-DI-Lab/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring07-SpringBoot-Ioc-DI-Lab/src/main/resources/jd-ticketing-project-bootstrap/assets/assets/images/background/Spring08-Ticketing-Project/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring08-Ticketing-Project-Bootstrap/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring-07-SpringBoot-MVC1/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring05-JavaAnnotation-Component/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring-08-SpringBoot-MVC-Controller/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring-08-SpringBoot-MVC-Form/pom.xml" />
+        <option value="$PROJECT_DIR$/ticketing/ticketing/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring-eCompany-Ticketing/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring-eTask/etask/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring01_SpringContainer/Spring03-BeanLifeCycle-InitAndDestroyMethod/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring03-BeanLifeCycle/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring04-JavaAnnotation-Component/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

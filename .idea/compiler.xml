@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eCompany (1)" />
+        <module name="Spring02-DI-SetterInjection" />
+        <module name="Spring02-DI-ConstructorInjection" />
+        <module name="Spring03-BeanScope-Singleton-Prototype" />
+        <module name="Spring01_SpringContainer" />
+        <module name="Spring04-BeanLifeCycle" />
+        <module name="Spring04-JavaAnnotation-Component" />
+        <module name="eCompany" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="eCompany (2)" target="17" />
+      <module name="eCompany (3)" target="17" />
+      <module name="eCompany (4)" target="17" />
+      <module name="etask" target="17" />
+      <module name="Spring-07-SpringBoot-MVC-Controller" target="17" />
+      <module name="Spring-eCompany-Ticketing" target="17" />
+      <module name="Spring-eTask" target="17" />
+      <module name="Spring03-BeanLifeCycle-InitAndDestroyMethod" target="17" />
+      <module name="Spring03-BeanScope-Singleton-Prototype (1)" target="17" />
+      <module name="Spring03-BeanScope-Singleton-Prototype (2)" target="17" />
+      <module name="Spring03-BeanScope-Singleton-Prototype (3)" target="17" />
+      <module name="Spring03-BeanScope-Singleton-Prototype (4)" target="17" />
+      <module name="Spring05-JavaAnnotation-Component" target="17" />
+      <module name="Spring07-SpringBoot-Ioc-DI-Lab" target="17" />
+      <module name="Spring08-Ticketing-Project" target="17" />
+      <module name="Spring08-Ticketing-Project-Bootstrap" target="17" />
+      <module name="SpringMVC-ProjectManagement" target="17" />
+      <module name="ticketing" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Spring-07-SpringBoot-MVC-Controller" options="-parameters" />
+      <module name="Spring-eCompany-Ticketing" options="-parameters" />
+      <module name="Spring-eTask" options="" />
+      <module name="Spring07-SpringBoot-Ioc-DI-Lab" options="-parameters" />
+      <module name="Spring08-Ticketing-Project" options="-parameters" />
+      <module name="Spring08-Ticketing-Project-Bootstrap" options="-parameters" />
+      <module name="SpringMVC-ProjectManagement" options="-parameters" />
+      <module name="eCompany" options="-parameters" />
+      <module name="eCompany (1)" options="-parameters" />
+      <module name="eCompany (2)" options="-parameters" />
+      <module name="eCompany (3)" options="-parameters" />
+      <module name="eCompany (4)" options="-parameters" />
+      <module name="etask" options="-parameters" />
+      <module name="ticketing" options="-parameters" />
+    </option>
+  </component>
+</project>
