@@ -13,6 +13,7 @@
         <module name="Spring03-BeanScope-Singleton-Prototype" />
         <module name="Spring01_SpringContainer" />
         <module name="Spring04-BeanLifeCycle" />
+        <module name="Spring04-JavaAnnotation-Autowired" />
         <module name="Spring04-JavaAnnotation-Component" />
         <module name="eCompany" />
       </profile>

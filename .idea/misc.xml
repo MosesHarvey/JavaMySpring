@@ -25,6 +25,7 @@
         <option value="$PROJECT_DIR$/Spring01_SpringContainer/Spring03-BeanLifeCycle-InitAndDestroyMethod/pom.xml" />
         <option value="$PROJECT_DIR$/Spring03-BeanLifeCycle/pom.xml" />
         <option value="$PROJECT_DIR$/Spring04-JavaAnnotation-Component/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring04-JavaAnnotation-Autowired/pom.xml" />
       </list>
     </option>
   </component>
