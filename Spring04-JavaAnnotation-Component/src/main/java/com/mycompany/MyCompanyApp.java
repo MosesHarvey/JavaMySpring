@@ -9,7 +9,8 @@ public class MyCompanyApp {
         ApplicationContext container = new ClassPathXmlApplicationContext("config.xml");
 
         Course course = container.getBean("java", Course.class);
-
+        Course course1 = container.getBean("API", Course.class); // upper case for All upper case lettered class name
         course.getTeachingHours();
+        course1.getTeachingHours();
     }
 }
