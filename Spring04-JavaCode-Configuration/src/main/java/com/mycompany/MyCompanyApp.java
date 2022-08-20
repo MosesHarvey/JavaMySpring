@@ -14,5 +14,8 @@ public class MyCompanyApp {
         Course course = container.getBean("java", Course.class);
 
         course.getTeachingHours();
+
+
+        System.out.println("course.toString() = " + course.toString());
     }
 }
