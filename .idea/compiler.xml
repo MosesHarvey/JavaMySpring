@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eCompany (1)" />
+        <module name="Spring08-SpringBoot-MVC-View" />
         <module name="Spring02-DI-ConstructorInjection" />
         <module name="Spring05-JavaCode-PostConstruct-PreDestroy" />
         <module name="Spring03-BeanScope-Singleton-Prototype" />
@@ -55,6 +56,7 @@
       <module name="Spring07-Ioc-DI-Lab" options="-parameters" />
       <module name="Spring07-SpringBoot-Ioc-DI-Lab" options="-parameters" />
       <module name="Spring08-SpringBoot-MVC-Controller" options="-parameters" />
+      <module name="Spring08-SpringBoot-MVC-View" options="-parameters" />
       <module name="Spring08-Ticketing-Project" options="-parameters" />
       <module name="Spring08-Ticketing-Project-Bootstrap" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
