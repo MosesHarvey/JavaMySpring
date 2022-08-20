@@ -18,6 +18,7 @@
         <module name="Spring04-JavaAnnotation-Qualifier" />
         <module name="Spring02-DI-SetterInjection" />
         <module name="Spring04-JavaCode-Configuration" />
+        <module name="Spring06-SpringBoot-Demo" />
         <module name="Spring01_SpringContainer" />
         <module name="Spring04-BeanLifeCycle" />
       </profile>
@@ -48,6 +49,7 @@
       <module name="Spring-07-SpringBoot-MVC-Controller" options="-parameters" />
       <module name="Spring-eCompany-Ticketing" options="-parameters" />
       <module name="Spring-eTask" options="" />
+      <module name="Spring06-SpringBoot-Demo" options="-parameters" />
       <module name="Spring07-SpringBoot-Ioc-DI-Lab" options="-parameters" />
       <module name="Spring08-Ticketing-Project" options="-parameters" />
       <module name="Spring08-Ticketing-Project-Bootstrap" options="-parameters" />

@@ -31,6 +31,7 @@
         <option value="$PROJECT_DIR$/Spring04-JavaAnnotation-Value/pom.xml" />
         <option value="$PROJECT_DIR$/Spring04-JavaCode-Configuration/pom.xml" />
         <option value="$PROJECT_DIR$/Spring05-JavaCode-PostConstruct-PreDestroy/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring06-SpringBoot-Demo/pom.xml" />
       </list>
     </option>
   </component>
