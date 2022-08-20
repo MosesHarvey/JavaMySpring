@@ -12,6 +12,7 @@
         <module name="Spring05-JavaCode-PostConstruct-PreDestroy" />
         <module name="Spring03-BeanScope-Singleton-Prototype" />
         <module name="Spring04-JavaAnnotation-Value" />
+        <module name="Spring07-Ioc-DI-Lab" />
         <module name="Spring04-JavaAnnotation-Autowired" />
         <module name="Spring04-JavaAnnotation-Component" />
         <module name="eCompany" />
@@ -50,6 +51,7 @@
       <module name="Spring-eCompany-Ticketing" options="-parameters" />
       <module name="Spring-eTask" options="" />
       <module name="Spring06-SpringBoot-Demo" options="-parameters" />
+      <module name="Spring07-Ioc-DI-Lab" options="-parameters" />
       <module name="Spring07-SpringBoot-Ioc-DI-Lab" options="-parameters" />
       <module name="Spring08-Ticketing-Project" options="-parameters" />
       <module name="Spring08-Ticketing-Project-Bootstrap" options="-parameters" />
