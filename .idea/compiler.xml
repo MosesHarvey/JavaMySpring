@@ -16,6 +16,7 @@
         <module name="Spring04-JavaAnnotation-Autowired" />
         <module name="Spring04-JavaAnnotation-Component" />
         <module name="eCompany" />
+        <module name="Spring04-JavaAnnotation-Qualifier" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
