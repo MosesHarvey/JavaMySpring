@@ -8,17 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eCompany (1)" />
-        <module name="Spring02-DI-SetterInjection" />
-        <module name="Spring04-JavaCode-Configuration" />
         <module name="Spring02-DI-ConstructorInjection" />
+        <module name="Spring05-JavaCode-PostConstruct-PreDestroy" />
         <module name="Spring03-BeanScope-Singleton-Prototype" />
         <module name="Spring04-JavaAnnotation-Value" />
-        <module name="Spring01_SpringContainer" />
-        <module name="Spring04-BeanLifeCycle" />
         <module name="Spring04-JavaAnnotation-Autowired" />
         <module name="Spring04-JavaAnnotation-Component" />
         <module name="eCompany" />
         <module name="Spring04-JavaAnnotation-Qualifier" />
+        <module name="Spring02-DI-SetterInjection" />
+        <module name="Spring04-JavaCode-Configuration" />
+        <module name="Spring01_SpringContainer" />
+        <module name="Spring04-BeanLifeCycle" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
