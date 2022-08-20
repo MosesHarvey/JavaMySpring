@@ -28,6 +28,7 @@
         <option value="$PROJECT_DIR$/Spring04-JavaAnnotation-Autowired/pom.xml" />
         <option value="$PROJECT_DIR$/Spring04-JavaAnnotation-Autowired/Spring04-JavaAnnotation-Qualifier/pom.xml" />
         <option value="$PROJECT_DIR$/Spring04-JavaAnnotation-Qualifier/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring04-JavaAnnotation-Value/pom.xml" />
       </list>
     </option>
   </component>
