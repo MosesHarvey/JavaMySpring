@@ -15,6 +15,7 @@
         <module name="Spring04-JavaAnnotation-Value" />
         <module name="Spring07-Ioc-DI-Lab" />
         <module name="Spring08-SpringBoot-MVC-Form" />
+        <module name="Spring09-SpringBoot-MVC-Lab" />
         <module name="Spring04-JavaAnnotation-Autowired" />
         <module name="Spring04-JavaAnnotation-Component" />
         <module name="eCompany" />
@@ -61,6 +62,7 @@
       <module name="Spring08-SpringBoot-MVC-View" options="-parameters" />
       <module name="Spring08-Ticketing-Project" options="-parameters" />
       <module name="Spring08-Ticketing-Project-Bootstrap" options="-parameters" />
+      <module name="Spring09-SpringBoot-MVC-Lab" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />
       <module name="eCompany (1)" options="-parameters" />
