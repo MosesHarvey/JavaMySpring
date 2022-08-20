@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="eCompany (1)" />
         <module name="Spring02-DI-SetterInjection" />
+        <module name="Spring04-JavaCode-Configuration" />
         <module name="Spring02-DI-ConstructorInjection" />
         <module name="Spring03-BeanScope-Singleton-Prototype" />
         <module name="Spring04-JavaAnnotation-Value" />
