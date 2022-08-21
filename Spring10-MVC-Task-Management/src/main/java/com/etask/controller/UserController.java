@@ -33,11 +33,11 @@ public class UserController {
 
        userService.save(user);
         // we need user. role table-users
-        model.addAttribute("user", new UserDTO());
-        model.addAttribute("roles", roleService.findAll());
-        model.addAttribute("users", userService.findAll());
+//        model.addAttribute("user", new UserDTO());
+//        model.addAttribute("roles", roleService.findAll());
+//        model.addAttribute("users", userService.findAll());
 
-        return "/user/user-create";
+        return "redirect:/user/create";   // directs to request, not to the view
 
     }
 
@@ -54,10 +54,12 @@ public class UserController {
 
         userService.update(user);
 
-        model.addAttribute("user", new UserDTO());
-        model.addAttribute("roles", roleService.findAll());
-        model.addAttribute("users", userService.findAll());
+        return "redirect:/user/create";
+    }
 
-        return "/user/user-create";
+    @GetMapping("/delete/{username}")
+    public String deleteUser(@PathVariable("username") String username){
+        userService.deleteById(username);
+        return "redirect:/user/create";
     }
 }
