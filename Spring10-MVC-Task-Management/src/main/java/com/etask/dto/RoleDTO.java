@@ -1,5 +1,4 @@
-package com.etask.entity;
-
+package com.etask.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,15 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class Role {
-
+public class RoleDTO {
     private Long id;
     private String description;
-
-    public Role(Long id, String description) {
-        this.id = id;
-        this.description = description;
-    }
 }
