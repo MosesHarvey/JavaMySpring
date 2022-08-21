@@ -26,6 +26,7 @@
         <module name="Spring06-SpringBoot-Demo" />
         <module name="Spring01_SpringContainer" />
         <module name="Spring04-BeanLifeCycle" />
+        <module name="eTask" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -45,6 +46,7 @@
       <module name="Spring07-SpringBoot-Ioc-DI-Lab" target="17" />
       <module name="Spring08-Ticketing-Project" target="17" />
       <module name="Spring08-Ticketing-Project-Bootstrap" target="17" />
+      <module name="Spring10-MVC-Task-Management" target="17" />
       <module name="SpringMVC-ProjectManagement" target="17" />
       <module name="ticketing" target="17" />
     </bytecodeTargetLevel>
@@ -63,12 +65,14 @@
       <module name="Spring08-Ticketing-Project" options="-parameters" />
       <module name="Spring08-Ticketing-Project-Bootstrap" options="-parameters" />
       <module name="Spring09-SpringBoot-MVC-Lab" options="-parameters" />
+      <module name="Spring10-MVC-Task-Management" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />
       <module name="eCompany (1)" options="-parameters" />
       <module name="eCompany (2)" options="-parameters" />
       <module name="eCompany (3)" options="-parameters" />
       <module name="eCompany (4)" options="-parameters" />
+      <module name="eTask" options="-parameters" />
       <module name="etask" options="-parameters" />
       <module name="ticketing" options="-parameters" />
     </option>
