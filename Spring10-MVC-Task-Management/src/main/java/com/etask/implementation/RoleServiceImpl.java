@@ -11,7 +11,7 @@ import java.util.List;
 public class RoleServiceImpl extends AbstractMapService<RoleDTO, Long> implements RoleService {
     @Override
     public List<RoleDTO> findAll() {
-        return super.findAl();
+        return super.findAll();
     }
 
     @Override

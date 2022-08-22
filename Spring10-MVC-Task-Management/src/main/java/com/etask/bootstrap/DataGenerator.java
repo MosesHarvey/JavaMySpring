@@ -50,13 +50,27 @@ public class DataGenerator implements CommandLineRunner {
                 "abc", true, "2012720544", employeeRole, Gender.MALE);
         UserDTO user5 = new UserDTO("John", "Terry","john.Terry@mailinator.com",
                 "abc", true, "2012220594", employeeRole, Gender.MALE);
+        UserDTO user6 = new UserDTO("John", "Smith","john.smith@mailinator.com",
+                "abc", true, "2013320544", managerRole, Gender.MALE);
+        UserDTO user7 = new UserDTO("Alica", "Marconi","Alica.marconi@mailinator.com",
+                "abc", true, "2012320544", managerRole, Gender.FEMALE);
+        UserDTO user8 = new UserDTO("Mike", "Json","mike.json@mailinator.com",
+                "abc", true, "2012229544", adminRole, Gender.MALE);
+        UserDTO user9 = new UserDTO("Sofia", "Harvey","sofia.harvey@mailinator.com",
+                "abc", true, "2012720544", employeeRole, Gender.MALE);
+        UserDTO user10 = new UserDTO("Franco", "Terry","franco.Terry@mailinator.com",
+                "abc", true, "2012220594", employeeRole, Gender.MALE);
 
         userService.save(user1);
         userService.save(user2);
         userService.save(user3);
         userService.save(user4);
         userService.save(user5);
-
+        userService.save(user6);
+        userService.save(user7);
+        userService.save(user8);
+        userService.save(user9);
+        userService.save(user10);
 
         ProjectDTO project1 = new ProjectDTO("Spring MVC", "PR001", user1, LocalDate.now(), LocalDate.now().plusDays(25 ), "Creating Controllers", Status.OPEN);
         ProjectDTO project2 = new ProjectDTO("Spring ORM", "PR002", user2, LocalDate.now(), LocalDate.now().plusDays(26 ), "Creating DB", Status.IN_PROGRESS);

@@ -15,7 +15,7 @@ public abstract class AbstractMapService <T, ID>{
        return object;
    }
 
-   List<T> findAl(){
+   List<T> findAll(){
        return new ArrayList<>(map.values());
    }
 

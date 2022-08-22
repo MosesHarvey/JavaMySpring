@@ -10,7 +10,7 @@ import java.util.List;
 public class ProjectServiceImpl extends AbstractMapService<ProjectDTO, String> implements ProjectService {
     @Override
     public List<ProjectDTO> findAll() {
-        return super.findAl();
+        return super.findAll();
     }
 
     @Override

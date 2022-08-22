@@ -26,7 +26,7 @@ public class ProjectContoller {
     public String projectCreate(Model model) {
         model.addAttribute("project", new ProjectDTO());
         model.addAttribute("projects", projectService.findAll());
-        model.addAttribute("managers", userService.findAll());
+        model.addAttribute("managers", userService.findManagers());
         return "/project/create";
     }
 
