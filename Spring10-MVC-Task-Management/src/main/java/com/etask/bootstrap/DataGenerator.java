@@ -2,16 +2,16 @@ package com.etask.bootstrap;
 
 import com.etask.dto.ProjectDTO;
 import com.etask.dto.RoleDTO;
+import com.etask.dto.TaskDTO;
 import com.etask.dto.UserDTO;
 import com.etask.enums.Gender;
 import com.etask.enums.Status;
-import com.etask.implementation.RoleServiceImpl;
 import com.etask.service.ProjectService;
 import com.etask.service.RoleService;
+import com.etask.service.TaskService;
 import com.etask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -23,7 +23,8 @@ public class DataGenerator implements CommandLineRunner {
     UserService userService;
     @Autowired
     ProjectService projectService;
-
+    @Autowired
+    TaskService taskService;
     @Autowired
     public DataGenerator(RoleService roleService, UserService userService) {
         this.roleService = roleService;
@@ -79,5 +80,17 @@ public class DataGenerator implements CommandLineRunner {
         projectService.save(project1);
         projectService.save(project2);
         projectService.save(project3);
+
+        TaskDTO task1 = new TaskDTO( project1, user8,"Controller", "Request Mapping", Status.IN_PROGRESS, LocalDate.now().minusDays(4));
+        TaskDTO task2 = new TaskDTO(project3, user3,"Mapping", "Many-to-Many", Status.IN_PROGRESS, LocalDate.now().minusDays(9));
+        TaskDTO task3 = new TaskDTO( project3, user5,"Configuration", "Database Connection", Status.COMPLETE, LocalDate.now().minusDays(20));
+        TaskDTO task4 = new TaskDTO(project2, user7,"DI", "Autowired", Status.UAT_TEST, LocalDate.now().minusDays(6));
+
+        taskService.save(task1);
+        taskService.save(task2);
+        taskService.save(task3);
+        taskService.save(task4);
+
+
     }
 }
