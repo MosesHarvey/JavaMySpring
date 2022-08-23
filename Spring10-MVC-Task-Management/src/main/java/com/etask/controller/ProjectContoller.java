@@ -52,4 +52,25 @@ public class ProjectContoller {
     return "redirect:/project/create";
    }
 
+    @GetMapping("/update/{projectcode}")
+    public String editProject(@PathVariable("projectcode") String projectcode, Model model){
+
+        model.addAttribute("project", projectService.findById(projectcode));
+        model.addAttribute("projects", projectService.findAll());
+        model.addAttribute("managers", userService.findManagers());
+
+        return "/project/update";
+    }
+
+    @PostMapping("/update/{projectcode}")
+    public String updateProject( @PathVariable("projectcode") String projectcode,ProjectDTO project, Model model){
+
+        projectService.update(project);
+
+
+        return "redirect:/project/create";
+    }
+
+
+
 }
