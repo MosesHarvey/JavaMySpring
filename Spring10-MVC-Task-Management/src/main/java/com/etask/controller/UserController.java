@@ -18,20 +18,21 @@ public class UserController {
 
     @Autowired
     UserService userService;
-    @GetMapping({"/create", "/add", "/initialize"})
-    public String createUser(Model model){
 
-    model.addAttribute("user", new UserDTO());
-    model.addAttribute("roles", roleService.findAll());
-    model.addAttribute("users", userService.findAll());
+    @GetMapping({"/create", "/add", "/initialize"})
+    public String createUser(Model model) {
+
+        model.addAttribute("user", new UserDTO());
+        model.addAttribute("roles", roleService.findAll());
+        model.addAttribute("users", userService.findAll());
 
         return "/user/user-create";
     }
 
     @PostMapping("/create")
-    public String insertUser(UserDTO user, Model model){
+    public String insertUser(UserDTO user, Model model) {
 
-       userService.save(user);
+        userService.save(user);
         // we need user. role table-users
 //        model.addAttribute("user", new UserDTO());
 //        model.addAttribute("roles", roleService.findAll());
@@ -42,7 +43,7 @@ public class UserController {
     }
 
     @GetMapping("/update/{username}")
-    public String editUser(@PathVariable("username") String username, Model model){
+    public String editUser(@PathVariable("username") String username, Model model) {
         model.addAttribute("user", userService.findById(username));
         model.addAttribute("users", userService.findAll());
         model.addAttribute("roles", roleService.findAll());
@@ -58,8 +59,10 @@ public class UserController {
     }
 
     @GetMapping("/delete/{username}")
-    public String deleteUser(@PathVariable("username") String username){
+    public String deleteUser(@PathVariable("username") String username) {
         userService.deleteById(username);
         return "redirect:/user/create";
     }
+
+
 }
