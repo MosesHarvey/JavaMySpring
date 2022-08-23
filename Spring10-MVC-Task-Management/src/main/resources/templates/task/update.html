@@ -33,7 +33,7 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                    <form class="needs-validation" novalidate th:action="@{/task/create}" method="post" th:object="${task}">
+                                    <form class="needs-validation" novalidate th:action="@{/task/update/{id}(id=${task.getId()})}" method="post" th:object="${task}">
 
                                         <div class="row" >
                                             <div class="col-sm-8 col-md-12">
@@ -42,7 +42,7 @@
                                                     <select  th:field="*{project}" class="custom-select" required="required">
                                                         <option value=" ' '"  th:text="Select"></option>
                                                         <option th:each="project : ${projects}" th:value="${project.projectCode}"
-                                                        th:text="${project.projectCode + '_' + project.projectName}"></option>
+                                                                th:text="${project.projectCode + '_' + project.projectName}"></option>
 
                                                     </select>
                                                     <div class="invalid-feedback"> Please Choose a Project</div>
@@ -144,7 +144,6 @@
                                                 <td>
                                                     <a th:href="@{/task/update/{id}(id=${task.getId()})}" class="btn btn-warning rounded-0">Update</a>
                                                     <a th:href="@{/task/delete/{id}(id=${task.getId()})}" class="btn btn-danger rounded-0">Delete</a>
-
 
                                                 </td>
 
