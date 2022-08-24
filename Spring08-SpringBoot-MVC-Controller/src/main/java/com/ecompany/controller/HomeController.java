@@ -49,14 +49,15 @@ public class HomeController {
     }
 
     @GetMapping("/ecompany/course")
-    public String requestParamEx(@RequestParam("course") String course){
-        System.out.println("course name is "+course);
+    public String requestParamEx(@RequestParam("course1") String course3){
+        //http://localhost:8080/ecompany/course?course1=math
+        System.out.println("course name is "+course3);
         return "welcome";
     }
 
     @GetMapping(value = "/course")
-    public String requestParamEx2(@RequestParam(value = "course", required = false, defaultValue = "Literature") String course){
-        System.out.println("course name is "+course);
+    public String requestParamEx2(@RequestParam(value = "course1", required = false, defaultValue = "Literature") String course1){
+        System.out.println("course name is "+course1);
         return "/home/home";
     }
 
