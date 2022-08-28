@@ -66,7 +66,7 @@ public class TaskController{
     }
 
     @PostMapping("/update/{id}")
-    public String updateTask(TaskDTO task, Model model){
+    public String updateTask( @PathVariable("id") Long id, TaskDTO task, Model model){
         taskService.update(task);
         return "redirect:/task/create";
     }

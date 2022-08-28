@@ -1,10 +1,12 @@
 package com.etask.implementation;
 
 import com.etask.dto.TaskDTO;
+import com.etask.dto.UserDTO;
 import com.etask.service.TaskService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long > implements TaskService {
@@ -31,6 +33,7 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long > implement
     @Override
     public void update(TaskDTO object) {
         TaskDTO foundProject = findById(object.getId());
+
         object.setAssignedDate(foundProject.getAssignedDate());
         object.setTaskStatus(foundProject.getTaskStatus());
        super.update(object.getId(), object);
@@ -39,5 +42,10 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long > implement
     @Override
     public TaskDTO findById(Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public List<TaskDTO> findTaskByManager(UserDTO manager) {
+        return super.findAll().stream().filter(task->task.getProject().getAssignedManager().equals(manager)).collect(Collectors.toList());
     }
 }

@@ -57,7 +57,7 @@
                                                     <select   th:field="*{assignedEmployee}" class="custom-select" required="required">
                                                         <option value=" ' '"  th:text="Select"></option>
                                                         <option th:each="employee : ${employees}" th:value="${employee.userName}"
-                                                                th:text="${employee.firstName + '_' + employee.lastName}"></option>
+                                                                th:text="${employee.firstName + ' ' + employee.lastName}"></option>
                                                     </select>
                                                     <div class="invalid-feedback">Please Choose an Employee</div>
                                                 </div>
@@ -129,13 +129,12 @@
                                                 <th scope="col">Assigned Date</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Action</th>
-
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr th:each="task : ${tasks}">
 
-                                                <td th:text="${task.project.projectCode + ' '+task.project.projectName}"></td>
+                                                <td th:text="${task.project.projectCode + '-'+ task.project.projectName}"></td>
                                                 <td th:text="${task.taskSubject}"></td>
                                                 <td th:text="${task.assignedEmployee.firstName + ' ' + task.assignedEmployee.lastName}"></td>
                                                 <td th:text="${#temporals.format(task.assignedDate, 'MM/dd/yyyy')}"></td>
@@ -144,8 +143,6 @@
                                                 <td>
                                                     <a th:href="@{/task/update/{id}(id=${task.getId()})}" class="btn btn-warning rounded-0">Update</a>
                                                     <a th:href="@{/task/delete/{id}(id=${task.getId()})}" class="btn btn-danger rounded-0">Delete</a>
-
-
                                                 </td>
 
                                             </tr>
