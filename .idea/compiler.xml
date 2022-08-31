@@ -14,6 +14,7 @@
         <module name="Spring03-BeanScope-Singleton-Prototype" />
         <module name="Spring04-JavaAnnotation-Value" />
         <module name="Spring07-Ioc-DI-Lab" />
+        <module name="Spring15-Orm-Table-Creation" />
         <module name="Spring08-SpringBoot-MVC-Form" />
         <module name="Spring09-SpringBoot-MVC-Lab" />
         <module name="Spring04-JavaAnnotation-Autowired" />
@@ -30,6 +31,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ecompany" target="17" />
       <module name="eCompany (2)" target="17" />
       <module name="eCompany (3)" target="17" />
       <module name="eCompany (4)" target="17" />
@@ -47,6 +49,8 @@
       <module name="Spring08-Ticketing-Project" target="17" />
       <module name="Spring08-Ticketing-Project-Bootstrap" target="17" />
       <module name="Spring10-MVC-Task-Management" target="17" />
+      <module name="Spring15-ORM-Table-Creation" target="17" />
+      <module name="Spring15-ORM-Table-Creeation" target="17" />
       <module name="SpringMVC-ProjectManagement" target="17" />
       <module name="ticketing" target="17" />
     </bytecodeTargetLevel>
@@ -66,6 +70,9 @@
       <module name="Spring08-Ticketing-Project-Bootstrap" options="-parameters" />
       <module name="Spring09-SpringBoot-MVC-Lab" options="-parameters" />
       <module name="Spring10-MVC-Task-Management" options="-parameters" />
+      <module name="Spring15-ORM-Table-Creation" options="-parameters" />
+      <module name="Spring15-ORM-Table-Creeation" options="-parameters" />
+      <module name="Spring15-Orm-Table-Creation" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />
       <module name="eCompany (1)" options="-parameters" />
@@ -73,6 +80,7 @@
       <module name="eCompany (3)" options="-parameters" />
       <module name="eCompany (4)" options="-parameters" />
       <module name="eTask" options="-parameters" />
+      <module name="ecompany" options="-parameters" />
       <module name="etask" options="-parameters" />
       <module name="ticketing" options="-parameters" />
     </option>
