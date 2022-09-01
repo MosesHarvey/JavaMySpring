@@ -28,6 +28,7 @@
         <module name="Spring06-SpringBoot-Demo" />
         <module name="Spring01_SpringContainer" />
         <module name="Spring04-BeanLifeCycle" />
+        <module name="Spring16-Orm-Mapping-ManyToOne" />
         <module name="eTask" />
       </profile>
     </annotationProcessing>
@@ -74,6 +75,7 @@
       <module name="Spring15-ORM-Table-Creation" options="-parameters" />
       <module name="Spring15-ORM-Table-Creeation" options="-parameters" />
       <module name="Spring15-Orm-Table-Creation" options="-parameters" />
+      <module name="Spring16-Orm-Mapping-ManyToOne" options="-parameters" />
       <module name="Spring16-Orm-Mapping-OneToOne" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />

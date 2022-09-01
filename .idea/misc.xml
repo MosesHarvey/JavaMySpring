@@ -42,6 +42,7 @@
         <option value="$PROJECT_DIR$/Spring10-MVC-Task-Management/Spring15-ORM-Table-Creeation/pom.xml" />
         <option value="$PROJECT_DIR$/Spring15-Orm-Table-Creation/pom.xml" />
         <option value="$PROJECT_DIR$/Spring16-Orm-Mapping-OneToOne/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring16-Orm-Mapping-ManyToOne/pom.xml" />
       </list>
     </option>
   </component>
