@@ -15,6 +15,7 @@
         <module name="Spring04-JavaAnnotation-Value" />
         <module name="Spring07-Ioc-DI-Lab" />
         <module name="Spring15-Orm-Table-Creation" />
+        <module name="Spring16-Orm-Mapping-OneToOne" />
         <module name="Spring08-SpringBoot-MVC-Form" />
         <module name="Spring09-SpringBoot-MVC-Lab" />
         <module name="Spring04-JavaAnnotation-Autowired" />
@@ -73,6 +74,7 @@
       <module name="Spring15-ORM-Table-Creation" options="-parameters" />
       <module name="Spring15-ORM-Table-Creeation" options="-parameters" />
       <module name="Spring15-Orm-Table-Creation" options="-parameters" />
+      <module name="Spring16-Orm-Mapping-OneToOne" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />
       <module name="eCompany (1)" options="-parameters" />
