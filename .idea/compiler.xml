@@ -20,6 +20,7 @@
         <module name="Spring09-SpringBoot-MVC-Lab" />
         <module name="Spring04-JavaAnnotation-Autowired" />
         <module name="Spring04-JavaAnnotation-Component" />
+        <module name="Spring17-ORM-Mapping-OneToMany" />
         <module name="eCompany" />
         <module name="Spring04-JavaAnnotation-Qualifier" />
         <module name="Spring02-DI-SetterInjection" />
@@ -77,6 +78,7 @@
       <module name="Spring15-Orm-Table-Creation" options="-parameters" />
       <module name="Spring16-Orm-Mapping-ManyToOne" options="-parameters" />
       <module name="Spring16-Orm-Mapping-OneToOne" options="-parameters" />
+      <module name="Spring17-ORM-Mapping-OneToMany" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />
       <module name="eCompany (1)" options="-parameters" />
