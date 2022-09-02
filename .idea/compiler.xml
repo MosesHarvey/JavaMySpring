@@ -7,29 +7,30 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eCompany (1)" />
-        <module name="Spring08-SpringBoot-MVC-View" />
         <module name="Spring02-DI-ConstructorInjection" />
         <module name="Spring05-JavaCode-PostConstruct-PreDestroy" />
         <module name="Spring03-BeanScope-Singleton-Prototype" />
         <module name="Spring04-JavaAnnotation-Value" />
         <module name="Spring07-Ioc-DI-Lab" />
-        <module name="Spring15-Orm-Table-Creation" />
         <module name="Spring16-Orm-Mapping-OneToOne" />
         <module name="Spring08-SpringBoot-MVC-Form" />
         <module name="Spring09-SpringBoot-MVC-Lab" />
         <module name="Spring04-JavaAnnotation-Autowired" />
         <module name="Spring04-JavaAnnotation-Component" />
+        <module name="Spring04-JavaCode-Configuration" />
+        <module name="Spring08-SpringBoot-MVC-Controller" />
+        <module name="Spring04-BeanLifeCycle" />
+        <module name="Spring16-Orm-Mapping-ManyToOne" />
+        <module name="eCompany (1)" />
+        <module name="Spring08-SpringBoot-MVC-View" />
+        <module name="Spring15-Orm-Table-Creation" />
         <module name="Spring17-ORM-Mapping-OneToMany" />
         <module name="eCompany" />
         <module name="Spring04-JavaAnnotation-Qualifier" />
+        <module name="Spring17-ORM-Mapping-ManyToMay" />
         <module name="Spring02-DI-SetterInjection" />
-        <module name="Spring04-JavaCode-Configuration" />
-        <module name="Spring08-SpringBoot-MVC-Controller" />
         <module name="Spring06-SpringBoot-Demo" />
         <module name="Spring01_SpringContainer" />
-        <module name="Spring04-BeanLifeCycle" />
-        <module name="Spring16-Orm-Mapping-ManyToOne" />
         <module name="eTask" />
       </profile>
     </annotationProcessing>
@@ -78,6 +79,7 @@
       <module name="Spring15-Orm-Table-Creation" options="-parameters" />
       <module name="Spring16-Orm-Mapping-ManyToOne" options="-parameters" />
       <module name="Spring16-Orm-Mapping-OneToOne" options="-parameters" />
+      <module name="Spring17-ORM-Mapping-ManyToMay" options="-parameters" />
       <module name="Spring17-ORM-Mapping-OneToMany" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />

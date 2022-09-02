@@ -44,6 +44,7 @@
         <option value="$PROJECT_DIR$/Spring16-Orm-Mapping-OneToOne/pom.xml" />
         <option value="$PROJECT_DIR$/Spring16-Orm-Mapping-ManyToOne/pom.xml" />
         <option value="$PROJECT_DIR$/Spring17-ORM-Mapping-OneToMany/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring17-ORM-Mapping-ManyToMay/pom.xml" />
       </list>
     </option>
   </component>
