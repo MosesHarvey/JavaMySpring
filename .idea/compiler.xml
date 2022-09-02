@@ -31,6 +31,7 @@
         <module name="Spring17-ORM-Mapping-ManyToMay" />
         <module name="Spring02-DI-SetterInjection" />
         <module name="Spring06-SpringBoot-Demo" />
+        <module name="Spring19-ORM-Derived-Queries" />
         <module name="Spring01_SpringContainer" />
         <module name="eTask" />
       </profile>
@@ -83,6 +84,7 @@
       <module name="Spring17-ORM-Mapping-ManyToMay" options="-parameters" />
       <module name="Spring17-ORM-Mapping-OneToMany" options="-parameters" />
       <module name="Spring18-ORM-CinemaLab" options="-parameters" />
+      <module name="Spring19-ORM-Derived-Queries" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />
       <module name="eCompany (1)" options="-parameters" />
