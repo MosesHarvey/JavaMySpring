@@ -17,6 +17,7 @@
         <module name="Spring09-SpringBoot-MVC-Lab" />
         <module name="Spring04-JavaAnnotation-Autowired" />
         <module name="Spring04-JavaAnnotation-Component" />
+        <module name="Spring21-ORM-CinemaLab-Queries" />
         <module name="Spring04-JavaCode-Configuration" />
         <module name="Spring08-SpringBoot-MVC-Controller" />
         <module name="Spring04-BeanLifeCycle" />
@@ -89,6 +90,7 @@
       <module name="Spring18-ORM-CinemaLab" options="-parameters" />
       <module name="Spring19-ORM-Derived-Queries" options="-parameters" />
       <module name="Spring20-ORM-JPQL-NamedQueries" options="-parameters" />
+      <module name="Spring21-ORM-CinemaLab-Queries" options="-parameters" />
       <module name="Spring21-Spring-CinemaLab-Queries" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />
