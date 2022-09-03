@@ -47,6 +47,7 @@
         <option value="$PROJECT_DIR$/Spring17-ORM-Mapping-ManyToMay/pom.xml" />
         <option value="$PROJECT_DIR$/Spring18-ORM-CinemaLab/pom.xml" />
         <option value="$PROJECT_DIR$/Spring19-ORM-Derived-Queries/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring20-ORM-JPQL-NamedQueries/pom.xml" />
       </list>
     </option>
   </component>

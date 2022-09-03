@@ -21,6 +21,7 @@
         <module name="Spring08-SpringBoot-MVC-Controller" />
         <module name="Spring04-BeanLifeCycle" />
         <module name="Spring16-Orm-Mapping-ManyToOne" />
+        <module name="Spring21-Spring-CinemaLab-Queries" />
         <module name="eCompany (1)" />
         <module name="Spring08-SpringBoot-MVC-View" />
         <module name="Spring15-Orm-Table-Creation" />
@@ -32,6 +33,7 @@
         <module name="Spring02-DI-SetterInjection" />
         <module name="Spring06-SpringBoot-Demo" />
         <module name="Spring19-ORM-Derived-Queries" />
+        <module name="Spring20-ORM-JPQL-NamedQueries" />
         <module name="Spring01_SpringContainer" />
         <module name="eTask" />
       </profile>
@@ -57,6 +59,7 @@
       <module name="Spring10-MVC-Task-Management" target="17" />
       <module name="Spring15-ORM-Table-Creation" target="17" />
       <module name="Spring15-ORM-Table-Creeation" target="17" />
+      <module name="Spring21-Spring-CinemaLab-Queries" target="17" />
       <module name="SpringMVC-ProjectManagement" target="17" />
       <module name="ticketing" target="17" />
     </bytecodeTargetLevel>
@@ -85,6 +88,8 @@
       <module name="Spring17-ORM-Mapping-OneToMany" options="-parameters" />
       <module name="Spring18-ORM-CinemaLab" options="-parameters" />
       <module name="Spring19-ORM-Derived-Queries" options="-parameters" />
+      <module name="Spring20-ORM-JPQL-NamedQueries" options="-parameters" />
+      <module name="Spring21-Spring-CinemaLab-Queries" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />
       <module name="eCompany (1)" options="-parameters" />
