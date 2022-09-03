@@ -1,4 +1,4 @@
-INSERT INTO departments (department, devision)
+INSERT INTO departments (department_name, division)
 VALUES ('Underwear','Clothing'),
        ( 'Potato','Grocery'),
        ('Decoration', 'Home'),
