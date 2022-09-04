@@ -1,11 +1,12 @@
 package com.etask.controller;
 
 import com.etask.dto.UserDTO;
+import com.etask.service.RoleService;
+import com.etask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,34 +14,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 
-//    @Autowired
-//    RoleService roleService;
-//
-//    @Autowired
-//    UserService userService;
-//
-//    @GetMapping({"/create", "/add", "/initialize"})
-//    public String createUser(Model model) {
-//
+    @Autowired
+    RoleService roleService;
+
+    @Autowired
+    UserService userService;
+
+    @GetMapping({"/create", "/add", "/initialize"})
+    public String createUser(Model model) {
+
+        model.addAttribute("user", new UserDTO());
+        model.addAttribute("roles", roleService.listAllRoles());
+        model.addAttribute("users", userService.listAllUsers());
+
+        return "/user/user-create";
+    }
+
+    @PostMapping("/create")
+    public String insertUser(UserDTO user, Model model) {
+
+        userService.save(user);
+        // we need user. role table-users
 //        model.addAttribute("user", new UserDTO());
-//        model.addAttribute("roles", roleService.findAll());
-//        model.addAttribute("users", userService.findAll());
-//
-//        return "/user/user-create";
-//    }
-//
-//    @PostMapping("/create")
-//    public String insertUser(UserDTO user, Model model) {
-//
-//        userService.save(user);
-//        // we need user. role table-users
-////        model.addAttribute("user", new UserDTO());
-////        model.addAttribute("roles", roleService.findAll());
-////        model.addAttribute("users", userService.findAll());
-//
-//        return "redirect:/user/create";   // directs to request, not to the view
-//
-//    }
+//        model.addAttribute("roles", roleService.listAllRoles());
+//        model.addAttribute("users", userService.listAllUsers());
+
+        return "redirect:/user/create";   // directs to request, not to the view
+
+    }
 //
 //    @GetMapping("/update/{username}")
 //    public String editUser(@PathVariable("username") String username, Model model) {
