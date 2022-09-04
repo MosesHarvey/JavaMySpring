@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/fragments/head :: header"></head>
+
+    <title>eCompany- Ticketing Project</title>
+  </head>
+
+  <body>
+    <div class="splash-container login-wrapper">
+      <div class="card">
+        <div class="card-header text-center">
+          <img
+            class="logo-img"
+            src="/images/My_Logo.png"
+            height="70"
+            alt="logo"
+          />
+        </div>
+
+        <div class="card-body">
+          <form th:action="@{/welcome}" method="post">
+            <div class="form-group">
+              <input class="form-control form-control-lg" id="username" type="text" placeholder="Username" autocomplete="off"/>
+            </div>
+
+            <div class="form-group">
+              <input class="form-control form-control-lg" id="password" type="password" placeholder="Password"/>
+            </div>
+
+            <div class="form-group">
+              <label class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox"/><span class="custom-control-label">Remember Me</span
+                >
+              </label>
+            </div>
+
+            <div >
+              <button type="submit" class="btn btn-info btn-lg btn-block">Sign in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jquery 3.3.1 -->
+    <div th:replace="/fragments/javascript :: js"></div>
+  </body>
+</html>
