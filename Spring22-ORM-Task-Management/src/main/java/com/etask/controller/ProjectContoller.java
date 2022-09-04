@@ -35,14 +35,14 @@ public class ProjectContoller {
         model.addAttribute("managers", userService.listAllByRole("manager"));
         return "/project/create";
     }
-//
-//
-//    @PostMapping("/create")
-//    public String insertProject(ProjectDTO project) {
-//        projectService.save(project);
-//        project.setProjectStatus(Status.OPEN);
-//        return "redirect:/project/create";
-//    }
+
+
+    @PostMapping("/create")
+    public String insertProject(ProjectDTO project) {
+        projectService.save(project);
+        project.setProjectStatus(Status.OPEN);
+        return "redirect:/project/create";
+    }
 //
 //    @GetMapping("/delete/{projectcode}")
 //    public String deleteProject(@PathVariable("projectcode") String projectcode) {
