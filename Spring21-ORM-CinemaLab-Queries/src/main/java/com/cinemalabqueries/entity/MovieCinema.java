@@ -28,4 +28,6 @@ public class MovieCinema extends BaseEntity{
     public MovieCinema(LocalDateTime localDateTime) {
         this.localDateTime = localDateTime;
     }
+
+
 }
