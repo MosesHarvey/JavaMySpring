@@ -1,4 +1,5 @@
-insert into roles(description) values ('Admin');
-insert into roles(description) values ('Manager');
-insert into roles(description) values ('Employee');
+insert into roles(description, is_deleted) values ('Admin', false);
+insert into roles(description, is_deleted) values ('Manager', false);
+insert into roles(description, is_deleted) values ('Employee', false);
+
 
