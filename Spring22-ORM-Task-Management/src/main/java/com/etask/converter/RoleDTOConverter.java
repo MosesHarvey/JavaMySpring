@@ -2,6 +2,7 @@ package com.etask.converter;
 
 
 import com.etask.dto.RoleDTO;
+import com.etask.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.core.convert.converter.Converter;

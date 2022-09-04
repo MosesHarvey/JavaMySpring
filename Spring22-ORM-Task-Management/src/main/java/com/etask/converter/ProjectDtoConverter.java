@@ -1,6 +1,7 @@
 package com.etask.converter;
 
 import com.etask.dto.ProjectDTO;
+import com.etask.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.core.convert.converter.Converter;
@@ -15,6 +16,7 @@ public class ProjectDtoConverter implements Converter<String, ProjectDTO> {
 
     @Override
     public ProjectDTO convert(String source) {
-        return projectService.findById(source);
+//        return projectService.findById(source);
+        return new ProjectDTO();
     }
 }
