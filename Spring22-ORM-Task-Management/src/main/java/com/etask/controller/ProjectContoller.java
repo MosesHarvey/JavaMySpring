@@ -22,20 +22,19 @@ import java.util.stream.Collectors;
 @RequestMapping("/project")
 public class ProjectContoller {
 //
-//    @Autowired
-//    ProjectService projectService;
-//    @Autowired
-//    UserService userService;
-//    @Autowired
-//    TaskService taskService;
-//
-//    @GetMapping("/create")
-//    public String projectCreate(Model model) {
-//        model.addAttribute("project", new ProjectDTO());
-//        model.addAttribute("projects", projectService.findAll());
-//        model.addAttribute("managers", userService.findManagers());
-//        return "/project/create";
-//    }
+    @Autowired
+    private ProjectService projectService;
+    @Autowired
+    private UserService userService;
+
+
+    @GetMapping("/create")
+    public String projectCreate(Model model) {
+        model.addAttribute("project", new ProjectDTO());
+        model.addAttribute("projects", projectService.listAllProjects());
+        model.addAttribute("managers", userService.listAllByRole("manager"));
+        return "/project/create";
+    }
 //
 //
 //    @PostMapping("/create")
