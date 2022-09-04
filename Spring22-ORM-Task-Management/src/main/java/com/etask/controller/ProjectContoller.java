@@ -5,6 +5,8 @@ import com.etask.dto.ProjectDTO;
 import com.etask.dto.TaskDTO;
 import com.etask.dto.UserDTO;
 import com.etask.enums.Status;
+import com.etask.service.ProjectService;
+import com.etask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
