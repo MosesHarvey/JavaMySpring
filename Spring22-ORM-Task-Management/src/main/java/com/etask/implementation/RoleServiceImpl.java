@@ -6,6 +6,7 @@ import com.etask.mapper.RoleMapper;
 import com.etask.repository.RoleRepository;
 import com.etask.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,15 +14,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class RoleServiceImpl implements RoleService {
-
-
+    @Lazy
+    @Autowired
     private RoleRepository roleRepository;
+    @Lazy
+    @Autowired
     private RoleMapper roleMapper;
 
-    public RoleServiceImpl(RoleRepository roleRepository, RoleMapper roleMapper) {
-        this.roleRepository = roleRepository;
-        this.roleMapper = roleMapper;
-    }
+
 
     @Override
     public List<RoleDTO> listAllRoles() {

@@ -5,6 +5,7 @@ import com.etask.dto.RoleDTO;
 import com.etask.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationPropertiesBinding
 public class RoleDTOConverter implements Converter<String, RoleDTO> {
 
+    @Lazy
     @Autowired
     RoleService roleService;
 

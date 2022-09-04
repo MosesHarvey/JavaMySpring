@@ -4,6 +4,7 @@ import com.etask.dto.UserDTO;
 import com.etask.service.RoleService;
 import com.etask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
+    @Lazy
     @Autowired
     RoleService roleService;
-
+    @Lazy
     @Autowired
     UserService userService;
 

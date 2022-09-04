@@ -6,6 +6,7 @@ import com.etask.mapper.UserMapper;
 import com.etask.repository.UserRepository;
 import com.etask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
-
+    @Lazy
     @Autowired
     UserRepository userRepository;
+    @Lazy
+    @Autowired
     UserMapper userMapper;
     @Override
     public List<UserDTO> listAllUsers() {
