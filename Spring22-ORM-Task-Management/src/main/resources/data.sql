@@ -1,5 +1,11 @@
-insert into roles(description, is_deleted) values ('Admin', false);
-insert into roles(description, is_deleted) values ('Manager', false);
-insert into roles(description, is_deleted) values ('Employee', false);
+insert into roles(insert_date_time, insert_user_id, is_deleted, last_updated_date_time, last_updated_user_id, description)
+values ('2021-01-06 00:00:00',1, false,'2021-01-06 00:00:00',1,  'Admin'),
+       ('2021-01-07 00:00:00',1, false,'2021-01-07 00:00:00',1,  'Manager'),
+       ('2021-01-07 00:00:00',1, false,'2021-01-07 00:00:00',1,  'Employee');
+
+insert into users(insert_date_time, insert_user_id, is_deleted, last_updated_date_time, last_updated_user_id, enabled,
+                  first_name, gender, last_name, user_name, role_id)
+values ('2021-01-06 00:00:00',1, false,'2021-01-06 00:00:00',1,true,  'admin', 'MALE','admin', 'admin@admin.com',1);
+
 
 

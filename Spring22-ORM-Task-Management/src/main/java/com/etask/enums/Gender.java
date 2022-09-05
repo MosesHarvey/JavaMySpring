@@ -2,7 +2,7 @@ package com.etask.enums;
 
 public enum Gender {
 
-    MALE("Male"), FEMALE("Female");
+    MALE("male"), FEMALE("female");
 
     private final String value;
 
