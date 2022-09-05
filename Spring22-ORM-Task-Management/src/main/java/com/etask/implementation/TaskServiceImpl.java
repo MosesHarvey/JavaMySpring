@@ -1,8 +1,10 @@
 package com.etask.implementation;
 
+import com.etask.dto.ProjectDTO;
 import com.etask.dto.TaskDTO;
 import com.etask.entity.Task;
 import com.etask.enums.Status;
+import com.etask.mapper.ProjectMapper;
 import com.etask.mapper.TaskMapper;
 import com.etask.repository.TaskRepository;
 import com.etask.service.TaskService;
@@ -24,6 +26,11 @@ public class TaskServiceImpl implements TaskService {
     @Lazy
     @Autowired
     TaskMapper taskMapper;
+
+    @Lazy
+    @Autowired
+    ProjectMapper projectMapper;
+
 
     @Override
     public TaskDTO findById(Long id) {
@@ -72,5 +79,28 @@ public class TaskServiceImpl implements TaskService {
             taskRepository.save(foundTask.get());
         }
 
+    }
+
+    @Override
+    public void deleteByProject(ProjectDTO project) {
+     List<TaskDTO>taskDTOS = listAllByProject(project);
+     taskDTOS.forEach(taskDTO -> delete(taskDTO.getId()));
+    }
+
+    @Override
+    public int totalNonCompletedTasks(String projectCode) {
+        return taskRepository.totalNonCompletedTasks(projectCode);
+    }
+
+    @Override
+    public int totalCompletedTasks(String projectCode) {
+        return taskRepository.totalCompletedTasks(projectCode);
+
+    }
+
+    public List<TaskDTO>listAllByProject(ProjectDTO project){
+        List<Task>list = taskRepository.findAllByProject(projectMapper.convertToEntity(project));
+        return list.stream().map(obj->{return taskMapper.convertToDTO(obj);
+        }).collect(Collectors.toList());
     }
 }

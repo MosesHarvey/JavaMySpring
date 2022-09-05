@@ -74,35 +74,15 @@ public class ProjectContoller {
 
         return "redirect:/project/create";
     }
-//
-//    @GetMapping("/manager/complete")
-//    public String getProjectsByManager(Model model) {
-//
-//        UserDTO manager = userService.findById("john.adam@mailinator.com");
-//        List<ProjectDTO> projects = getCountedListOfProjectDTO(manager);
-//        model.addAttribute("projects", projects);
-//
-//        return "/manager/project-status";
-//    }
-//
-//    List<ProjectDTO> getCountedListOfProjectDTO(UserDTO manager) {
-//        List<ProjectDTO> list = projectService.findAll().stream().filter(x -> x.getAssignedManager().equals(manager)).map(x -> {
-//            List<TaskDTO> taskList = taskService.findTaskByManager(manager);
-//
-//            int completeCount = (int) taskList.stream().filter(t -> t.getProject().equals(x) && t.getTaskStatus() == Status.COMPLETE).count();
-//            int inCompleteCount = (int) taskList.stream().filter(t -> t.getProject().equals(x) && t.getTaskStatus() != Status.COMPLETE).count();
-//
-////            return new ProjectDTO(x.getProjectName(), x.getProjectCode(), userService.findById(x.getAssignedManager().getUserName()),
-////                    x.getStartDate(), x.getEndDate(), x.getProjectDetail(), x.getProjectStatus(), completeCount, inCompleteCount);
-//
-//            x.setCompleteTaskCounts(completeCount);
-//            x.setInCompleteTaskCounts(inCompleteCount);
-//            return x;
-//        }).collect(Collectors.toList());
-//
-//
-//        return list;
-//
-//    }
+
+    @GetMapping("/manager/complete")
+    public String getProjectsByManager(Model model) {
+
+       List<ProjectDTO> projects = projectService.listAllProjectDetails();
+        model.addAttribute("projects", projects);
+
+        return "/manager/project-status";
+    }
+
 
 }
