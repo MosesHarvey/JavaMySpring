@@ -2,6 +2,8 @@ package com.etask.repository;
 
 import com.etask.entity.Project;
 import com.etask.entity.Task;
+import com.etask.entity.User;
+import com.etask.enums.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -19,4 +21,5 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     int totalCompletedTasks(String projectCode);
 
     List<Task> findAllByProject(Project project);
+    List<Task>findAllByTaskStatusIsNotAndAssignedEmployee(Status status, User user);
 }

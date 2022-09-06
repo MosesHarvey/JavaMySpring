@@ -3,10 +3,12 @@ package com.etask.implementation;
 import com.etask.dto.ProjectDTO;
 import com.etask.dto.TaskDTO;
 import com.etask.entity.Task;
+import com.etask.entity.User;
 import com.etask.enums.Status;
 import com.etask.mapper.ProjectMapper;
 import com.etask.mapper.TaskMapper;
 import com.etask.repository.TaskRepository;
+import com.etask.repository.UserRepository;
 import com.etask.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -30,6 +32,10 @@ public class TaskServiceImpl implements TaskService {
     @Lazy
     @Autowired
     ProjectMapper projectMapper;
+
+    @Lazy
+    @Autowired
+    UserRepository userRepository;
 
 
     @Override
@@ -106,6 +112,10 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<TaskDTO> listAllTasksByStatusIsNot(Status status) {
-        return null;
+
+        User user = userRepository.findByUserName("admin@admin.com");
+        List<Task>list = taskRepository.findAllByTaskStatusIsNotAndAssignedEmployee(status, user);
+
+        return list.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
     }
 }
