@@ -57,7 +57,7 @@
                         <div class="col-md-12">
                             <section class="panel">
                                 <header class="panel-heading">
-                                    <h2 class="panel-title">User List</h2>
+                                    <h2 class="panel-title">Employee List</h2>
                                 </header>
                                 <div class="panel-body">
                                     <div class="table-responsive">
@@ -80,7 +80,7 @@
                                                     <td th:text="${task.assignedEmployee.firstName + ' ' + task.assignedEmployee.lastName}"></td>
                                                     <td th:text="${#temporals.format(task.assignedDate, 'MM/dd/yyyy')}"></td>
                                                     <td th:text="${task.taskStatus}"></td>
-                                                    <td><a th:href="@{/task/employee/edit/{id}(id=${task.id})}" class="btn btn-warning rounded-0">Update</a></td>
+                                                    <td><a class="btn btn-warning rounded-0" th:href="@{/task/employee/edit/{id}(id=${task.getId()})}">Update</a></td>
                                                 </tr>
                                             </tbody>
                                         </table>
