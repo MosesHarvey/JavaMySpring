@@ -3,6 +3,7 @@ package com.etask.service;
 import com.etask.dto.ProjectDTO;
 import com.etask.dto.TaskDTO;
 import com.etask.entity.Task;
+import com.etask.entity.User;
 import com.etask.enums.Status;
 
 import java.util.List;
@@ -29,5 +30,5 @@ public interface TaskService {
     List<TaskDTO>listAllTaskByStatus(Status status);
 
 
-
+    List<TaskDTO> readAllByEmployee(User assignedEmployee);
 }

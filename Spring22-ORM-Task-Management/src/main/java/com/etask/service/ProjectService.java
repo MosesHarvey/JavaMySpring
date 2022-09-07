@@ -1,7 +1,8 @@
 package com.etask.service;
 
 import com.etask.dto.ProjectDTO;
-import com.etask.entity.Project;
+
+import com.etask.entity.User;
 
 import java.util.List;
 
@@ -13,5 +14,8 @@ public interface ProjectService {
     void update(ProjectDTO dto);
     void delete(String projectCode);
     void complete(String projectCode);
+    List<ProjectDTO>readAllByAssignedManager(User user);
+
+
     List<ProjectDTO> listAllProjectDetails();
 }

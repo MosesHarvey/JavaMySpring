@@ -3,6 +3,7 @@ package com.etask.service;
 
 import com.etask.dto.UserDTO;
 import com.etask.entity.User;
+import com.etask.exception.TaskManagementException;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface UserService {
     UserDTO findByUserName(String username);
     void save(UserDTO dto);
     UserDTO update(UserDTO dto);
-    void delete(String username);
+    void delete(String username) throws TaskManagementException;
 
     void deleteByUserName(String username);
 

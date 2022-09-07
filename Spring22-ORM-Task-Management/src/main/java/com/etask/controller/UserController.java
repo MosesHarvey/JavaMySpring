@@ -1,6 +1,7 @@
 package com.etask.controller;
 
 import com.etask.dto.UserDTO;
+import com.etask.exception.TaskManagementException;
 import com.etask.service.RoleService;
 import com.etask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +59,7 @@ public class UserController {
     }
 
     @GetMapping("/delete/{username}")
-    public String deleteUser(@PathVariable("username") String username) {
+    public String deleteUser(@PathVariable("username") String username) throws TaskManagementException {
         userService.delete(username);
         return "redirect:/user/create";
     }
