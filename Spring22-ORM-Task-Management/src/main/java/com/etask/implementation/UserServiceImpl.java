@@ -1,9 +1,13 @@
 package com.etask.implementation;
 
+import com.etask.dto.ProjectDTO;
+import com.etask.dto.TaskDTO;
 import com.etask.dto.UserDTO;
 import com.etask.entity.User;
 import com.etask.mapper.UserMapper;
 import com.etask.repository.UserRepository;
+import com.etask.service.ProjectService;
+import com.etask.service.TaskService;
 import com.etask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -21,6 +25,15 @@ public class UserServiceImpl implements UserService {
     @Lazy
     @Autowired
     UserMapper userMapper;
+
+    @Lazy
+    @Autowired
+    private ProjectService projectService;
+
+    @Lazy
+    @Autowired
+    private TaskService taskService;
+
     @Override
     public List<UserDTO> listAllUsers() {
 
@@ -72,5 +85,22 @@ public class UserServiceImpl implements UserService {
         List<User>users = userRepository.findAllByRoleDescriptionIgnoreCase(role);
 
         return users.stream().map(obj->{return userMapper.convertToDTO(obj);}).collect(Collectors.toList());
+    }
+
+    @Override
+    public Boolean checkIfUserCanBeDeleted(User user) {
+
+        switch (user.getRole().getDescription()){
+            case "Manager":
+                List<ProjectDTO>projectList = projectService.readAllByAssignedManager(user);
+                return projectList.size()==0;
+            case "Employee":
+                List<TaskDTO>taskDTOS = taskService.readAllByEmployee(user);
+                return taskDTOS.size()==0;
+            default:
+                return true;
+
+        }
+
     }
 }
