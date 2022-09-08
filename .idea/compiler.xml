@@ -22,6 +22,7 @@
         <module name="Spring08-SpringBoot-MVC-Controller" />
         <module name="Spring04-BeanLifeCycle" />
         <module name="Spring16-Orm-Mapping-ManyToOne" />
+        <module name="Spring27-Security-Default-Configuration" />
         <module name="Spring21-Spring-CinemaLab-Queries" />
         <module name="eCompany (1)" />
         <module name="Spring08-SpringBoot-MVC-View" />
@@ -62,6 +63,7 @@
       <module name="Spring15-ORM-Table-Creation" target="17" />
       <module name="Spring15-ORM-Table-Creeation" target="17" />
       <module name="Spring21-Spring-CinemaLab-Queries" target="17" />
+      <module name="Spring27-Application-Security" target="17" />
       <module name="SpringMVC-ProjectManagement" target="17" />
       <module name="ticketing" target="17" />
     </bytecodeTargetLevel>
@@ -94,6 +96,8 @@
       <module name="Spring21-ORM-CinemaLab-Queries" options="-parameters" />
       <module name="Spring21-Spring-CinemaLab-Queries" options="-parameters" />
       <module name="Spring22-ORM-Task-Management" options="-parameters" />
+      <module name="Spring27-Application-Security" options="-parameters" />
+      <module name="Spring27-Security-Default-Configuration" options="-parameters" />
       <module name="SpringMVC-ProjectManagement" options="-parameters" />
       <module name="eCompany" options="-parameters" />
       <module name="eCompany (1)" options="-parameters" />
