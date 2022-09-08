@@ -18,19 +18,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String firstName;
-    private String lastName;
+    private String userName;
+    private String password;
     private int active;
     private String roles;
     private String permissions;
 
-    public User(String firstName, String lastName, String roles, String permissions) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.active =1;
+    public User(String userName, String password, String roles, String permissions) {
+        this.userName = userName;
+        this.password = password;
+        this.active = 1;
         this.roles = roles;
         this.permissions = permissions;
-
     }
 
     public List<String> getRoleList(){
