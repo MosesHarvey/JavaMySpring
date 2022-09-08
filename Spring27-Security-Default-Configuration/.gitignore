@@ -4,7 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-fontawsome/
+!**/src/main/resources/static/fontawsome/
 
 ### STS ###
 .apt_generated

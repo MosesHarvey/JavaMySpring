@@ -51,6 +51,8 @@
         <option value="$PROJECT_DIR$/Spring21-ORM-CinemaLab-Queries/pom.xml" />
         <option value="$PROJECT_DIR$/Spring22-ORM-Task-Management/pom.xml" />
         <option value="$PROJECT_DIR$/Spring27-Security-Default-Configuration/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring27-Security-Default-Configuration/Spring27-Security-Custom-Configuration/pom.xml" />
+        <option value="$PROJECT_DIR$/Spring27-Security-Custom-Configuration/pom.xml" />
       </list>
     </option>
   </component>
