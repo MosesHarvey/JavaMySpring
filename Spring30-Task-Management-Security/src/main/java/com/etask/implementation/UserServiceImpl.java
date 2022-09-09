@@ -14,6 +14,7 @@ import com.etask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,6 +36,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private TaskService taskService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     public List<UserDTO> listAllUsers() {
 
@@ -52,7 +56,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(UserDTO dto) {
+        User foundUser = userRepository.findByUserName(dto.getUserName());
+        dto.setEnabled(true);
+
       User obj = mapperUtil.convert(dto, new User());
+      obj.setPassword(passwordEncoder.encode(obj.getPassword()));
       userRepository.save(obj);
     }
 
