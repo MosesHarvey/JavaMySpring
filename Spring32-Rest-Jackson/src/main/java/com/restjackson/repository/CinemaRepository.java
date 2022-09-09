@@ -1,6 +1,7 @@
 package com.restjackson.repository;
 
-import com.cinemalab.entity.Cinema;
+
+import com.restjackson.entity.Cinema;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

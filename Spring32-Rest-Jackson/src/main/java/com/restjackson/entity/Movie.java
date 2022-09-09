@@ -1,7 +1,9 @@
 package com.restjackson.entity;
 
-import com.cinemalab.enums.MovieState;
-import com.cinemalab.enums.MovieType;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.restjackson.enums.MovieState;
+import com.restjackson.enums.MovieType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIgnoreProperties(value={"hibernate_Lazy_Initializer"}, ignoreUnknown = true)
 public class Movie extends BaseEntity {
 
     private String name;
