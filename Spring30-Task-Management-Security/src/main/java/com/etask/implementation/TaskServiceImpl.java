@@ -12,6 +12,7 @@ import com.etask.repository.UserRepository;
 import com.etask.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -112,8 +113,8 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<TaskDTO> listAllTasksByStatusIsNot(Status status) {
-
-        User user = userRepository.findByUserName("admin@admin.com");
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUserName(username);
         List<Task>list = taskRepository.findAllByTaskStatusIsNotAndAssignedEmployee(status, user);
 
         return list.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
@@ -130,8 +131,9 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public List<TaskDTO> listAllTaskByStatus(Status status) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        User user = userRepository.findByUserName("admin@admin.com");
+        User user = userRepository.findByUserName(username);
         List<Task>list = taskRepository.findAllByTaskStatusIsNotAndAssignedEmployee(status, user);
         return list.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
     }
@@ -144,7 +146,8 @@ public class TaskServiceImpl implements TaskService {
 
 
     public List<TaskDTO> listAllTasksByProjectManager() {
-        User user = userRepository.findByUserName("admin@admin.com");
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findByUserName(username);
         List<Task>tasks = taskRepository.findAllByProjectAssignedManager(user);
 
         return tasks.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());

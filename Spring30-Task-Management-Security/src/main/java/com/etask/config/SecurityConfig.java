@@ -1,9 +1,7 @@
-package com.config;
+package com.etask.config;
 
 import com.etask.service.SecurityService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -29,6 +27,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
+                .antMatchers("/user/**").hasAuthority("Admin")
+                .antMatchers("/project/**").hasAuthority("Manager")
+                .antMatchers("/task/employee/**").hasAuthority("Employee")
+                .antMatchers("/task/**").hasAuthority("Manager")
                 .antMatchers(
                         "/",
                         "/login",
@@ -50,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .rememberMe()
                    .tokenValiditySeconds(120)
-                   .key("abc")
+                   .key("Abc1")
                 .userDetailsService(securityService);
     }
 }

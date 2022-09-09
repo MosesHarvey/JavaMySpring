@@ -13,6 +13,7 @@ import com.etask.service.TaskService;
 import com.etask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -99,7 +100,9 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<ProjectDTO> listAllProjectDetails() {
 
-        UserDTO currentUserDTO = userService.findByUserName("jahegovi@mailinator.com");
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        UserDTO currentUserDTO = userService.findByUserName(username);
         User user = userMapper.convertToEntity(currentUserDTO);
        List<Project>list=projectRepository.findAllByAssignedManager(user);
 
@@ -108,5 +111,15 @@ public class ProjectServiceImpl implements ProjectService {
             obj.setInCompleteTaskCounts(taskService.totalNonCompletedTasks(project.getProjectCode()));
             obj.setCompleteTaskCounts(taskService.totalCompletedTasks(project.getProjectCode()));
         return obj;}).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ProjectDTO> listAllNotCompleteProjects() {
+
+
+        return projectRepository.findAllByProjectStatusIsNot(Status.COMPLETE)
+                .stream()
+                .map(project -> projectMapper.convertToDto(project))
+                .collect(Collectors.toList());
     }
 }

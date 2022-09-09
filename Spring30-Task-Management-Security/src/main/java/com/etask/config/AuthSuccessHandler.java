@@ -1,4 +1,4 @@
-package com.config;
+package com.etask.config;
 
 import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.context.annotation.Configuration;
