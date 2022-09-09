@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/JavaMySpring.iml" filepath="$PROJECT_DIR$/.idea/JavaMySpring.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring00-LooselyCoupled/Spring00-LooselyCoupled.iml" filepath="$PROJECT_DIR$/Spring00-LooselyCoupled/Spring00-LooselyCoupled.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spring00_tightlyCoupled/Spring00_tightlyCoupled.iml" filepath="$PROJECT_DIR$/Spring00_tightlyCoupled/Spring00_tightlyCoupled.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spring32-Rest-HttpVerbs-Preferred/Spring32-Rest-HttpVerbs-Preferred.iml" filepath="$PROJECT_DIR$/Spring32-Rest-HttpVerbs-Preferred/Spring32-Rest-HttpVerbs-Preferred.iml" />
     </modules>
   </component>
 </project>
