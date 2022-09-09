@@ -1,6 +1,7 @@
 package com.responseentity.contoller;
 
 import com.responseentity.entity.Product;
+import com.responseentity.entity.ResponseWrapper;
 import com.responseentity.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -70,6 +71,23 @@ public class ProductController {
 
         List<Product>list = productService.updateProduct(id, product);
         return new ResponseEntity<>(list, map, HttpStatus.OK);
+    }
+
+    @GetMapping("/read")
+    public ResponseEntity<ResponseWrapper>readAllProducts(){
+        return ResponseEntity
+                .ok(new ResponseWrapper("Product Successfully retrieved", productService.getProducts()));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ResponseWrapper>deleteProduct1(@PathVariable("id") Long id){
+        return ResponseEntity.ok(new ResponseWrapper(("Product Successfully Deleted!")));
+    }
+
+    @DeleteMapping("/delete1/{id}")
+    public ResponseEntity<ResponseWrapper>deleteProduct2(@PathVariable("id") Long id){
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(new ResponseWrapper("Product Successfully Deleted!"));
+
     }
 
 }
