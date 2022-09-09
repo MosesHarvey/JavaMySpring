@@ -4,9 +4,11 @@ import com.resthttpverb.entity.Product;
 import com.resthttpverb.repository.ProductRepository;
 import com.resthttpverb.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ProductServiceImpl implements ProductService {
 
 
