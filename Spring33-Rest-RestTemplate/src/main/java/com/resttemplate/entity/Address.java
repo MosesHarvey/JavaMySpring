@@ -24,6 +24,8 @@ public class Address {
     private String city;
     private String zipcode;
 
+    @OneToOne(mappedBy = "address")
+    private User user;
 
 
 

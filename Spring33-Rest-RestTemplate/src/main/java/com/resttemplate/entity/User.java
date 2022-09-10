@@ -32,7 +32,7 @@ public class User {
     @JoinColumn(name="address_id")
     public Address address;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name="company_id")
     public Company company;
 }
