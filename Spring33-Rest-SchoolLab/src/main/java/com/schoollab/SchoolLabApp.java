@@ -2,6 +2,8 @@ package com.schoollab;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class SchoolLabApp {
@@ -10,4 +12,9 @@ public class SchoolLabApp {
         SpringApplication.run(SchoolLabApp.class, args);
     }
 
+
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
+    }
 }
