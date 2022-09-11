@@ -54,8 +54,8 @@ public class Address extends BaseEntity{
     public Integer consumeTemp(String city){
 
         RestTemplate restTemplate = new RestTemplate();
-        String BASE_URI="https://api.weatherstack.com/current?access_key=02a009b8e3922c395677a1e85406aca6&query=";
-        String uri = BASE_URI + city;
+        String BASE_URL="https://api.weatherstack.com/current?access_key=02a009b8e3922c395677a1e85406aca6&query=";
+        String uri = BASE_URL + city;
         Object currentWeather = restTemplate.getForObject(uri, Object.class);
 
         Map<String, Object> getWeather = (Map<String, Object>)currentWeather;
