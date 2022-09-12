@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: eTask API Documentation
+  description: eTask Managing
+  contact:
+    url: https://etask.com
+    name: eTask Solution
+servers:
+   # Added by API Auto Mocking Plugin
+   - description: SwaggerHub API Auto Mocking
+     url: https://virtserver.swaggerhub.com/MosesHarvey/eTaskAPI/1.0
+   - url: https://dev.etask.com
+     description: Development Server
+   - url: https://qa.dev.etask.com
+     description: QA Server
+   - url: https://prod.etask.com
+     description: Production Server
+paths:
+  /v1/courses:
+    get:
+      summary: List Courses
+      description: Get a list of courses in the etaks
+      tags:
+        - Course
+      parameters:
+        - name: courseId
+          in: query
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: List of Courses
+        '400':
+          description: No Course Found
+  /v1/students:
+    get:
+      summary: List Students
+      description: Get a list of students in etask
+      tags:
+        - Students
+      responses:
+        '200':
+          description: List of Students
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentList'
+        '400':
+          description: No student Found
+    post:
+      summary:  New Student
+      description: Create a new student
+      tags:
+        - Students
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '201':
+           description: Student Created
+           headers:
+             Location:
+               description: Location of created student
+               schema:
+                 type: string
+                 format: uri
+                 example: http://example.com/v1/students/{studentId}
+  /v1/students/{studentId}:
+    get:
+      summary: Get student by ID
+      description: Get a *single*  **student** by its ID
+      tags:
+        - Students
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List of Students
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentList'
+    put:
+      summary: Update Student
+      description: Update student by ID
+      tags:
+         - Students
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '200':
+         description: Student Updated
+    delete:
+      summary: Delete Student
+      description: Delete student by ID
+      tags:
+         - Students
+      parameters:
+        - name: studentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Student Updated
+        '400':
+          description: Bad request
+
+
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        street:
+          type: string
+          example: 7985 Jones Branch Dr
+        city:
+          type: string
+          example: Mclean
+        zipCode:
+          type: integer
+          example: 20225
+        state:
+          type: string
+          #enum: [VA, NY, TX, CA]
+          enum:
+            - VA
+            - NY
+            - TX
+            - CA
+    Student:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        firstName:
+          type: string
+          minLength: 2
+          maxLength: 100
+          example: Mike
+        lastName:
+          type: string
+          minLength: 2
+          maxLength: 100
+          example: Smith
+        address:
+          $ref: '#/components/schemas/Address'
+      description: student object
+    StudentList:
+      type: array
+      description: List of Students
+      items:
+        $ref: '#/components/schemas/Student'

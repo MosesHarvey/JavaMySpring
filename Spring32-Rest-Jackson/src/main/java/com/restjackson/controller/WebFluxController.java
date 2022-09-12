@@ -19,7 +19,6 @@ import reactor.core.publisher.Mono;
 public  class WebFluxController {
 
     private WebClient webClient = WebClient.builder().baseUrl("http://localhost:8080/").build();
-
     private MovieCinemaRepository movieCinemaRepository;
     private GenreRepository genreRepository;
 
@@ -30,6 +29,7 @@ public  class WebFluxController {
 
     @GetMapping("/flux-movie-cinemas")
     public Flux<MovieCinema> readAllCinemaFlux(){
+
         return Flux.fromIterable(movieCinemaRepository.findAll());
     }
 
@@ -104,7 +104,12 @@ public  class WebFluxController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public Mono<Void> deleteWebClient(@PathVariable("id") Long id){
+    public Mono<Void> deleteWebClient(@PathVariable("id") Long id) throws Exception {
+
+        Integer countGenre = genreRepository.countGenresNativeQuery(id);
+        if(countGenre >0){
+            throw new Exception("Genre can't be deleted, it is linked to a movie!");
+        }
         return webClient.delete()
                 .uri("/delete-genre/{id}", id)
                 .retrieve()
