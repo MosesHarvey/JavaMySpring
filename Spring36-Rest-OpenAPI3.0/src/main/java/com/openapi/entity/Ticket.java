@@ -25,7 +25,7 @@ public class Ticket extends BaseEntity{
     private MovieCinema movieCinema;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="user_account_id")
+    @JoinColumn(name="users_id")
     private User user;
 
     public Ticket(Integer seatNumber, Integer rowNumber, LocalDateTime dateTime) {
