@@ -23,4 +23,6 @@
 #security:
 # jwt:
 #    secret-key: moses
-#
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
