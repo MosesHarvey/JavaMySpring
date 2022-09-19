@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DefaultExceptionAnnotation {
+public @interface DefaultExceptionMessage {
 
     String defaultMessage() default "";
 }
