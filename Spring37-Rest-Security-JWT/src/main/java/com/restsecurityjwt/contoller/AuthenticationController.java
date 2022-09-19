@@ -1,8 +1,10 @@
 package com.restsecurityjwt.contoller;
 
+import com.restsecurityjwt.annotation.DefaultExceptionMessage;
 import com.restsecurityjwt.entity.AuthenticationRequest;
 import com.restsecurityjwt.entity.ResponseWrapper;
 import com.restsecurityjwt.entity.User;
+import com.restsecurityjwt.exception.ServiceException;
 import com.restsecurityjwt.service.UserService;
 import com.restsecurityjwt.util.JWTUtil;
 import org.apache.catalina.filters.AddDefaultCharsetFilter;
@@ -27,6 +29,7 @@ public class AuthenticationController {
 
 
     @PostMapping("/authenticate")
+    @DefaultExceptionMessage(defaultMessage = "Bad Credentials")
     public ResponseEntity<ResponseWrapper>doLogin(@RequestBody AuthenticationRequest authenticationRequest){
         String password = authenticationRequest.getPassword();
         String username = authenticationRequest.getUsername();
@@ -38,5 +41,11 @@ public class AuthenticationController {
          String jwtToken = jwtUtil.generateToken(foundUser, foundUser.getUserName());
 
          return ResponseEntity.ok(new ResponseWrapper("Login successull", jwtToken));
+    }
+
+    @PostMapping("/create-user")
+    public ResponseEntity<ResponseWrapper>createAccount(@RequestBody User user)throws ServiceException{
+        User createUser = userService.createUser(user);
+        return ResponseEntity.ok(new ResponseWrapper("User has been created Successfully", createUser));
     }
 }
