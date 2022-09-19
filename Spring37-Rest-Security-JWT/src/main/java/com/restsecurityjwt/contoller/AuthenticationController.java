@@ -26,7 +26,7 @@ public class AuthenticationController {
     private JWTUtil jwtUtil;
 
 
-    @PostMapping
+    @PostMapping("/authenticate")
     public ResponseEntity<ResponseWrapper>doLogin(@RequestBody AuthenticationRequest authenticationRequest){
         String password = authenticationRequest.getPassword();
         String username = authenticationRequest.getUsername();
