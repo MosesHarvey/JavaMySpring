@@ -20,7 +20,7 @@ public class JWTUtil {
     @Value("${security.jwt.secret-key}")
     private String secret = "moses";
 
-    public String generateToken(User user, String username){
+    public String generateToken(User user){
 
         Map<String, Object> claims = new HashMap<>();
         claims.put("id", user.getId());
