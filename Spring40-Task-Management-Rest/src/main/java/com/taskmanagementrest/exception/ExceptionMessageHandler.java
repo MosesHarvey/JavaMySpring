@@ -23,7 +23,7 @@ import java.util.Optional;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class ExceptionMessageHandler {
 
-    @ExceptionHandler(ServiceException.class)
+    @ExceptionHandler(TaskManagementException.class)
     public ResponseEntity<ResponseWrapper> serviceException(ServiceException se){
         String message = se.getMessage();
         return new ResponseEntity<>(ResponseWrapper.builder().success(false).code(HttpStatus.CONFLICT.value()).message(message).build(),HttpStatus.CONFLICT);

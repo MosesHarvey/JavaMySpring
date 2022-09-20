@@ -2,6 +2,7 @@ package com.taskmanagementrest.controller;
 
 
 
+import com.taskmanagementrest.annotation.DefaultExceptionMessage;
 import com.taskmanagementrest.dto.UserDTO;
 import com.taskmanagementrest.entity.ResponseWrapper;
 import com.taskmanagementrest.entity.User;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@DefaultExceptionMessage(defaultMessage = "Bad Credentials")
 public class LoginController {
 
     private AuthenticationManager authenticationManager;
