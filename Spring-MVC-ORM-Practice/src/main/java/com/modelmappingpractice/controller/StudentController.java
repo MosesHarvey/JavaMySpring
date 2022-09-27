@@ -3,6 +3,7 @@ package com.modelmappingpractice.controller;
 
 import com.modelmappingpractice.dto.StudentDTO;
 import com.modelmappingpractice.repositoty.StudentRepository;
+import com.modelmappingpractice.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,19 +17,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StudentController {
 
     @Autowired
-    StudentRepository studentRepository;
+    private StudentService studentService;
 
     @GetMapping("/list")
+    public String getStudentList(Model model){
+        model.addAttribute("students", studentService.listAllStudent());
+        return "/administration/student-list";
+    }
+
+    @GetMapping("/form")
     public String getStudent(Model model){
 
         model.addAttribute("student", new StudentDTO());
         return "/administration/student-form";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/form")
     public String insertStudent(@ModelAttribute StudentDTO studentDTO){
 
+        studentService.save(studentDTO);
 
-        return "/administration/student-form";
+        return "redirect:/student/form";
     }
 }
