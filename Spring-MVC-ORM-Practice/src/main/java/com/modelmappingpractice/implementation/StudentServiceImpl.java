@@ -6,10 +6,17 @@ import com.modelmappingpractice.mappers.MapperUtil;
 import com.modelmappingpractice.mappers.StudentMapper;
 import com.modelmappingpractice.repositoty.StudentRepository;
 import com.modelmappingpractice.services.StudentService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,10 +35,8 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void save(StudentDTO studentDTO) {
 
-
 //       Student student = studentMapper.convertToEntity(studentDTO);
         Student student = mapperUtil.convert(studentDTO, new Student());
-
         studentRepository.save(student);
     }
 
@@ -51,6 +56,12 @@ public class StudentServiceImpl implements StudentService {
         return students.stream().map(obj->{
             return studentMapper.convertToDTO(obj);})
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public StudentDTO findById(Long id) {
+        Student student = studentRepository.findById(id).get();
+        return studentMapper.convertToDTO(student);
     }
 
 

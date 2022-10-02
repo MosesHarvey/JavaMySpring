@@ -1,14 +1,15 @@
 package com.modelmappingpractice.services;
 
+import com.modelmappingpractice.dto.PassportDTO;
 import com.modelmappingpractice.dto.StudentDTO;
 
 import java.util.List;
 
-public interface StudentService {
+public interface PassportService {
 
     void save(StudentDTO studentDTO);
 
     List<StudentDTO> listAllStudent();
 
-    StudentDTO findById(Long id);
+    PassportDTO findById(Long id);
 }
