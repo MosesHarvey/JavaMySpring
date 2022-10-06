@@ -33,6 +33,9 @@ public class Passport {
 //    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private String expiredDate;
 
+//    @OneToOne(mappedBy="passport")
+//    private Student student;
+
 
 
 

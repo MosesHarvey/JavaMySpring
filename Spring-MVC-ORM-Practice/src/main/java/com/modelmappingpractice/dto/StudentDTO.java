@@ -1,5 +1,6 @@
 package com.modelmappingpractice.dto;
 
+import com.modelmappingpractice.entity.Department;
 import com.modelmappingpractice.entity.Passport;
 import com.modelmappingpractice.enums.Status;
 import lombok.AllArgsConstructor;
@@ -23,5 +24,6 @@ public class StudentDTO {
     private String issuedGovernment;
     private String issuedDate;
     private String expiredDate;
+    private DepartmentDTO department;
 
 }

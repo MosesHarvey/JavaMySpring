@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>department Form</title>
+</head>
+<body>
+
+<br>
+
+<div class="container">
+
+    <h2 th:align="center">Department Form</h2>
+
+<!--    <div class="actions">-->
+<!--        <a th:href="@{/department/list}"><button type="button" class="btn btn-secondary"> ≡ Back To List</button></a>-->
+<!--    </div>-->
+
+    <div>
+
+    </div>
+
+    <form th:action="@{/department/create}" method="post" th:object="${department}">
+
+        <div class="row">
+            <div class="col">
+                <label for="inputDepartment">Department</label>
+                <input type="text" th:field="*{name}" id="inputDepartment" class="form-control" placeholder="Department">
+            </div>
+            <div class="col">
+                <label for="inputCoordinator">Coordinator</label>
+                <input type="text" id="inputCoordinator" th:field="*{coordinator}" class="form-control" placeholder="Coordinator">
+            </div>
+
+            <div class="col">
+                <label for="inputPhone">Phone</label>
+                <input type="text" class="form-control" id="inputPhone" th:field="*{phone}" placeholder="Phone">
+            </div>
+        </div>
+
+        <div class="form-row" style="float:right">
+            <button type="submit" class="btn btn-success">Create</button>
+            <button type="reset" class="btn btn-warning">Cancel</button>
+        </div>
+
+    </form>
+
+
+
+
+</div>
+<br>
+
+<div class="container">
+    <div>
+    <h2 th:align="center">Department List</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Coordinator</th>
+            <th scope="col">Phone</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="department : ${departments}">
+            <td th:text="${department.id}"></td>
+            <td th:text="${department.name}"></td>
+            <td th:text="${department.coordinator}"></td>
+            <td th:text="${department.phone}"></td>
+
+        </tr>
+
+        </tbody>
+    </table>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--&lt;!&ndash;-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+</body>
+</html>

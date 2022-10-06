@@ -3,9 +3,13 @@ package com.modelmappingpractice.controller;
 
 import com.modelmappingpractice.dto.PassportDTO;
 import com.modelmappingpractice.dto.StudentDTO;
+import com.modelmappingpractice.entity.Department;
+import com.modelmappingpractice.entity.Passport;
+import com.modelmappingpractice.entity.Student;
 import com.modelmappingpractice.enums.Status;
 import com.modelmappingpractice.mappers.MapperUtil;
 import com.modelmappingpractice.repositoty.StudentRepository;
+import com.modelmappingpractice.services.DepartmentService;
 import com.modelmappingpractice.services.PassportService;
 import com.modelmappingpractice.services.StudentService;
 import org.joda.time.DateTime;
@@ -35,6 +39,9 @@ public class StudentController {
     @Autowired
     private MapperUtil mapperUtil;
 
+    @Autowired
+    private DepartmentService departmentService;
+
     @GetMapping("/list")
     public String getStudentList(Model model){
         model.addAttribute("students", studentService.listAllStudent());
@@ -44,8 +51,10 @@ public class StudentController {
     @GetMapping("/form")
     public String getStudent(Model model){
 
+
         model.addAttribute("student", new StudentDTO());
         model.addAttribute("statuses", Status.values());
+        model.addAttribute("departments", departmentService.listAllDepartments());
         return "/administration/student-form";
     }
 
@@ -63,6 +72,9 @@ public class StudentController {
 
         return "redirect:/student/form";
     }
+
+
+
 
 
 //    @GetMapping("/list")
@@ -90,4 +102,10 @@ public class StudentController {
 //    public List<StudentDTO> students(){
 //        return studentService.listAllStudent();
 //    }
+
+
+
+
+
+
 }

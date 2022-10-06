@@ -28,4 +28,8 @@ public class Student extends BaseEntity{
     @JoinColumn(name="passport_no")
     private Passport passport;
 
+    @ManyToOne
+    @JoinColumn(name="department_id")
+    private Department department;
+
 }

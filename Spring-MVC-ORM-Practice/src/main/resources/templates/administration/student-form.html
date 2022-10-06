@@ -57,13 +57,25 @@
 <!--            <label for="inputCity">City</label>-->
 <!--            <input type="text" class="form-control" id="inputCity">-->
 <!--        </div>-->
-        <div class="form-group col-md-4">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
             <label for="inputStatus">Status</label>
             <select th:field="*{status}" id="inputStatus" class="form-control">
                 <option value=" ' '"  th:text="Selected"></option>
                 <option th:each="stat : ${statuses}" th:value="${stat.name()}" th:text="${stat}"></option>
             </select>
         </div>
+
+
+        <div class="form-group col-md-6">
+            <label for="inputDepartment">Department</label>
+            <select th:field="*{department}" id="inputDepartment" class="form-control">
+                <option value="' '"  th:text="Selected"></option>
+                <option th:each="dept : ${departments}" th:value="${dept.id}" th:text="${dept.name}"></option>
+            </select>
+        </div>
+    </div>
 
     <div class="form-row">
         <div class="col">
