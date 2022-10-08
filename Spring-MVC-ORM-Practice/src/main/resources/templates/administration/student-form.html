@@ -79,18 +79,22 @@
 
     <div class="form-row">
         <div class="col">
+            <label>Passport No.</label>
             <input type="text" th:field="*{passportNo}"  class="form-control" placeholder="Passport No.">
         </div>
         <div class="col">
+            <label>Issued Government</label>
             <input type="text" th:field="*{issuedGovernment}" class="form-control" placeholder="Issued Government">
         </div>
     </div>
 
     <div class="form-row">
         <div class="col date"  data-date-format="dd/mm/yyyy">
+            <label>Issued Date</label>
             <input type="date" data-date-format="dd/mm/yyyy" th:field="*{issuedDate}" class="form-control" placeholder="Issued date">
         </div>
         <div class="col date"  data-date-format="dd/mm/yyyy">
+            <label>Expiry Date</label>
             <input type="date" data-date-format="dd/mm/yyyy" th:field="*{expiredDate}" class="form-control" placeholder="Expiry Date">
         </div>
     </div>
