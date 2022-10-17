@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String insertUser(UserDTO user, Model model) {
+    public String insertUser(UserDTO user, Model model) throws TaskManagementException {
 
         userService.save(user);
 

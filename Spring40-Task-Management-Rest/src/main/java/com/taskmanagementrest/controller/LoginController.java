@@ -20,9 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -77,6 +75,18 @@ public class LoginController {
         return ResponseEntity.ok(new ResponseWrapper("User has been created", createUser));
    }
 
+
+    @DefaultExceptionMessage(defaultMessage = "Failed to confirm email, try again")
+    @GetMapping("/confirmation")
+    @Operation(summary = "Confirm account")
+    public ResponseEntity<ResponseWrapper>confirmEmail(@RequestParam("token") String token) throws TaskManagementException {
+        ConfirmationToken confirmationToken = confirmationTokenService.readByToken(token);
+
+        UserDTO confirmUser = userService.confirm(confirmationToken.getUser());
+        confirmationTokenService.delete(confirmationToken);
+
+        return ResponseEntity.ok(new ResponseWrapper("User has been confirmed", confirmUser));
+    }
 
 
     private MailDTO createEmail(UserDTO userDTO) {
