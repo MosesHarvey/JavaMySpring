@@ -55,13 +55,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(UserDTO dto) {
+    public UserDTO save(UserDTO dto) throws TaskManagementException {
         User foundUser = userRepository.findByUserName(dto.getUserName());
-        dto.setEnabled(true);
+        if(foundUser!=null) throw new TaskManagementException("User already exist");
 
-      User obj = mapperUtil.convert(dto, new User());
-      obj.setPassword(passwordEncoder.encode(obj.getPassword()));
-      userRepository.save(obj);
+      User user = mapperUtil.convert(dto, new User());
+      user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+      User suser = userRepository.save(user);
+
+      return mapperUtil.convert(suser, new UserDTO());
+
     }
 
     @Override
