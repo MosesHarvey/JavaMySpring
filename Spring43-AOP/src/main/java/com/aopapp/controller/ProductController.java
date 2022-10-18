@@ -1,4 +1,4 @@
-package com.aopapp.contoller;
+package com.aopapp.controller;
 
 
 import com.aopapp.entity.Product;
