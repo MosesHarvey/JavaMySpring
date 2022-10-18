@@ -4,10 +4,7 @@ package com.aopapp.aspects;
 import com.aopapp.controller.ProductController;
 import com.aopapp.entity.Product;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -89,5 +86,29 @@ public class LoginAspect {
         logger.info("After Returning(List Result) -> Method {} - results : {} ", joinPoint.getSignature().toString(), results );
 
     }
+
+
+    // after throwing
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
+    private void anyGetPutOperation(){}
+
+    @AfterThrowing(pointcut = "anyGetPutOperation()", throwing = "exception")
+    public void afterThrowingControllerAdvice(JoinPoint joinPoint, RuntimeException exception){
+        logger.info("After Throwing(Send Email to L2 Team ) -> Method {} - exception : {} ", joinPoint.getSignature().toString(), exception.getMessage() );
+
+    }
+
+    // after
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
+    private void anyGetPutOperation1(){}
+
+    @After( "anyGetPutOperation1()")
+    public void afterControllerAdvice(JoinPoint joinPoint){
+        logger.info("After finally -> Method {} - results : {} ", joinPoint.getSignature().toString());
+
+    }
+
+
+
 
 }
