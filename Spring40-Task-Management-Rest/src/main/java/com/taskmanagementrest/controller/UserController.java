@@ -20,9 +20,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -49,13 +52,44 @@ public class UserController {
     @DefaultExceptionMessage(defaultMessage = "Something went wrong, try again")
     @PostMapping("/create-user")
     @Operation(summary = "Crate new account")
-    private ResponseEntity<ResponseWrapper> doRegister(@RequestBody UserDTO user) throws TaskManagementException {
+    @PreAuthorize("hasAuthority('Admin')")
+    public ResponseEntity<ResponseWrapper> doRegister(@RequestBody UserDTO user) throws TaskManagementException {
 
         UserDTO createUser = userService.save(user);
         sendEmail(createEmail(createUser));
 
         return ResponseEntity.ok(new ResponseWrapper("User has been created", createUser));
     }
+
+    @GetMapping
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong, try again")
+    @Operation(summary = "Read All Users")
+    @PreAuthorize("hasAuthority('Admin')")
+    public ResponseEntity<ResponseWrapper>readAll(){
+       List<UserDTO> users = userService.listAllUsers();
+       return ResponseEntity.ok(new ResponseWrapper("Successfully retrieved User", users));
+    }
+
+    @GetMapping("/{username}")
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong, try again")
+    @Operation(summary = "Read a User")
+    // admin can see other's profile, current user can see his/her own profile
+    public ResponseEntity<ResponseWrapper>readByUserName(@PathVariable("username") String username){
+
+
+        UserDTO userDTO = userService.findByUserName(username);
+        return ResponseEntity.ok(new ResponseWrapper("User successfully retrieved", userDTO));
+    }
+
+
+
+
+
+
+
+
+
+
 
     private MailDTO createEmail(UserDTO userDTO) {
 
