@@ -1,22 +1,26 @@
 package com.taskmanagementrest.controller;
 
 
+import com.taskmanagementrest.annotation.DefaultExceptionMessage;
 import com.taskmanagementrest.dto.TaskDTO;
+import com.taskmanagementrest.entity.ResponseWrapper;
+import com.taskmanagementrest.entity.Task;
 import com.taskmanagementrest.enums.Status;
+import com.taskmanagementrest.exception.TaskManagementException;
 import com.taskmanagementrest.service.ProjectService;
 import com.taskmanagementrest.service.TaskService;
 import com.taskmanagementrest.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/task")
 public class TaskController{
 
@@ -27,86 +31,95 @@ public class TaskController{
     @Autowired
     TaskService taskService;
 
-    @GetMapping("/create")
-    public String createTask(Model model){
+    @GetMapping("/all")
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong")
+    @Operation(summary = "Read all tasks")
+    @PreAuthorize("hasAuthority('Manager')")
+    public ResponseEntity<ResponseWrapper>readAll(){
+      return ResponseEntity.ok(new ResponseWrapper("Successfully retrived all tasks", taskService.listAllTasks()));
+    }
 
-        model.addAttribute("task", new TaskDTO());
-        model.addAttribute("projects", projectService.listAllNotCompleteProjects());
-        model.addAttribute("employees", userService.listAllByRole("employee"));
+    @GetMapping("/project-manager")
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong")
+    @Operation(summary = "Read all tasks by project manager")
+    @PreAuthorize("hasAuthority('Manager')")
+    public ResponseEntity<ResponseWrapper>readAllByProjectManager() throws TaskManagementException {
+        List<TaskDTO>taskList = taskService.listAllTasksByProjectManager();
+        return ResponseEntity.ok(new ResponseWrapper("Successfully retrieved all tasks", taskList));
+    }
 
-        model.addAttribute("tasks", taskService.listAllTasks());
-
-        return "/task/create";
+    @GetMapping("/{id}")
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong")
+    @Operation(summary = "Read a tasks by id")
+    @PreAuthorize("hasAnyAuthority('Manager', 'Employee')")
+    public ResponseEntity<ResponseWrapper>readById(@PathVariable("id") Long id) throws TaskManagementException {
+        TaskDTO currentTask = taskService.findById(id);
+        return ResponseEntity.ok(new ResponseWrapper("Successfully retrieved all tasks", currentTask));
     }
 
     @PostMapping("/create")
-    public String insertTask(TaskDTO task){
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong")
+    @Operation(summary = "Create a task")
+    @PreAuthorize("hasAuthority('Manager')")
+    public ResponseEntity<ResponseWrapper>createTask(@RequestBody TaskDTO taskDTO){
 
-        taskService.save(task);
+        TaskDTO createdTask = taskService.save(taskDTO);
 
-        return "redirect:/task/create";
+        return ResponseEntity.ok(new ResponseWrapper("Task created successfully", createdTask));
+
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteTask(@PathVariable("id") Long id){
+    @DeleteMapping("/delete")
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong")
+    @Operation(summary = "Delete a task")
+    @PreAuthorize("hasAuthority('Manager')")
+    public ResponseEntity<ResponseWrapper>deleteTask(@PathVariable("id") Long id) throws TaskManagementException {
+
         taskService.delete(id);
-        return "redirect:/task/create";
+
+        return ResponseEntity.ok(new ResponseWrapper("Task deleted successfully"));
 
     }
 
-    @GetMapping("/update/{id}")
-    public String editTask(@PathVariable("id") Long id, Model model){
+    @PutMapping("/update")
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong")
+    @Operation(summary = "Update a task")
+    @PreAuthorize("hasAuthority('Manager')")
+    public ResponseEntity<ResponseWrapper>deleteTask(@RequestBody TaskDTO taskDTO) throws TaskManagementException {
 
-        model.addAttribute("task",taskService.findById(id));
-        model.addAttribute("projects", projectService.listAllNotCompleteProjects());
-        model.addAttribute("employees", userService.listAllByRole("employee"));
-        model.addAttribute("tasks",taskService.listAllTasks());
+        TaskDTO updatedTask = taskService.update(taskDTO);
 
-        return "/task/update";
-    }
+        return ResponseEntity.ok(new ResponseWrapper("Task deleted successfully", updatedTask));
 
-    @PostMapping("/update/{id}")
-    public String updateTask(TaskDTO task){
-        taskService.update(task);
-        return "redirect:/task/create";
     }
 
     @GetMapping("/employee")
-    public String edit(Model model){
-        List<TaskDTO>tasks =  taskService.listAllTasksByStatusIsNot(Status.COMPLETE);
-        model.addAttribute("tasks",tasks);
-
-        return "/task/employee-tasks";
-    }
-
-    @GetMapping("/employee/edit/{id}")
-    public String employeeUpdate(@PathVariable("id") Long id, Model model){
-        TaskDTO task = taskService.findById(id);
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong")
+    @Operation(summary = "Read all non completed tasks")
+    @PreAuthorize("hasAuthority('Manager')")
+    public ResponseEntity<ResponseWrapper>employeeReadAllNonCompletedTask() throws TaskManagementException {
         List<TaskDTO>tasks = taskService.listAllTasksByStatusIsNot(Status.COMPLETE);
-
-        model.addAttribute("task",task);
-        model.addAttribute("users", userService.listAllByRole("employee"));
-        model.addAttribute("projects", projectService.listAllNotCompleteProjects());
-        model.addAttribute("tasks", tasks);
-        model.addAttribute("statuses", Status.values());
-
-        return "/task/employee-update";
-            }
-
-    @PostMapping("/employee/update/{id}")
-    public String employeeUpdate(@PathVariable("id") Long id, TaskDTO taskDTO){
-     taskService.update(taskDTO);
-     return "redirect:/task/employee";
+        return ResponseEntity.ok(new ResponseWrapper("Successfully read all non completed tasks", tasks));
     }
 
-    @GetMapping("/employee/archive")
-    public String employeeArchive(Model model){
-
-        List<TaskDTO>tasks = taskService.listAllTaskByStatus(Status.COMPLETE);
-        model.addAttribute("tasks", tasks);
-        return "/task/employee-archive";
-
-
+    @PutMapping("/employee")
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong")
+    @Operation(summary = "Read all non completed tasks")
+    @PreAuthorize("hasAuthority('Manager')")
+    public ResponseEntity<ResponseWrapper>employeeUpdateTask(@RequestBody TaskDTO taskDTO) throws TaskManagementException {
+        TaskDTO task = taskService.updateStatus(taskDTO);
+        return ResponseEntity.ok(new ResponseWrapper("Successfully read all non completed tasks", task));
     }
+
+
+
+
+
+
+
+
+
+
+
 
 }
