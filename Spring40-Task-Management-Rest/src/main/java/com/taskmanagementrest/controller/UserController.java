@@ -84,8 +84,34 @@ public class UserController {
 
 
 
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong, try again")
+    @PutMapping("/update")
+    @Operation(summary = "Update a User")
+    @PreAuthorize("hasAuthority('Admin')")
+    public ResponseEntity<ResponseWrapper> updateUser(@RequestBody UserDTO user) throws TaskManagementException {
 
+        UserDTO updateUser = userService.update(user);
 
+        return ResponseEntity.ok(new ResponseWrapper("User has been updated", updateUser));
+    }
+
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong, try again")
+    @DeleteMapping("/delete")
+    @Operation(summary = "Delete a User")
+    @PreAuthorize("hasAuthority('Admin')")
+   public ResponseEntity<ResponseWrapper>deleteUser(@PathVariable("username") String username) throws TaskManagementException {
+        userService.delete(username);
+        return ResponseEntity.ok(new ResponseWrapper("successfully deleted"));
+   }
+
+    @GetMapping("/role")
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong, try again")
+    @Operation(summary = "Read All Users by role")
+    @PreAuthorize("hasAnyAuthority('Admin','Manager')")
+   public ResponseEntity<ResponseWrapper>readByRole(@RequestParam String role){
+        List<UserDTO>userList = userService.listAllByRole(role);
+        return ResponseEntity.ok(new ResponseWrapper("successfully retrieved users", userList));
+   }
 
 
 

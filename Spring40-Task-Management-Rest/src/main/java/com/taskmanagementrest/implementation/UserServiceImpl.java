@@ -69,16 +69,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO update(UserDTO dto) {
-
+    public UserDTO update(UserDTO dto) throws TaskManagementException {
+        // find current user
         User user = userRepository.findByUserName(dto.getUserName());
-        // map update user tp dto to entity
+
+        if(user == null) throw new TaskManagementException("User does not exist");
+        // map update user to dto to entity
         User convertedUser = mapperUtil.convert(dto, new User());
         // set id to converted user
         convertedUser.setId(user.getId());
         convertedUser.setPassword(passwordEncoder.encode(convertedUser.getPassword()));
         convertedUser.setEnabled(true);
+        convertedUser.setId(user.getId());
+
         // save updated user
+
         userRepository.save(convertedUser);
         return findByUserName(dto.getUserName());
     }
