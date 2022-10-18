@@ -1,6 +1,7 @@
 package com.taskmanagementrest.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.taskmanagementrest.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
+@JsonIgnoreProperties(value = {"hibernateInitializer"}, ignoreUnknown = true)
 public class TaskDTO {
 
     private Long id;

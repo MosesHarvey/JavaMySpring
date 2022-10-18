@@ -1,6 +1,7 @@
 package com.taskmanagementrest.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.taskmanagementrest.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name="projects")
 @Where(clause="is_deleted=false")
+@JsonIgnoreProperties(value = {"hibernateInitializer"}, ignoreUnknown = true)
 public class Project extends BaseEntity {
 
     @Column(unique = true)

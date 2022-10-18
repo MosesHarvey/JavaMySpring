@@ -1,6 +1,7 @@
 package com.taskmanagementrest.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.taskmanagementrest.enums.Gender;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="users")
 @Where(clause="is_deleted=false")
+@JsonIgnoreProperties(value = {"hibernateInitializer"}, ignoreUnknown = true)
 public class User extends BaseEntity {
 
     private String firstName;
