@@ -3,7 +3,8 @@ package com.taskmanagementrest.implementation;
 
 import com.taskmanagementrest.dto.RoleDTO;
 import com.taskmanagementrest.entity.Role;
-import com.taskmanagementrest.mapper.RoleMapper;
+import com.taskmanagementrest.exception.TaskManagementException;
+import com.taskmanagementrest.util.MapperUtil;
 import com.taskmanagementrest.repository.RoleRepository;
 import com.taskmanagementrest.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class RoleServiceImpl implements RoleService {
     private RoleRepository roleRepository;
     @Lazy
     @Autowired
-    private RoleMapper roleMapper;
+    private MapperUtil mapperUtil;
 
 
 
@@ -29,12 +30,12 @@ public class RoleServiceImpl implements RoleService {
 
         List<Role>list = roleRepository.findAll();
         // convert entity to DTO
-        return list.stream().map(obj->{return roleMapper.convertToDTO(obj);}).collect(Collectors.toList());
+        return list.stream().map(obj->{return mapperUtil.convert(obj, new RoleDTO());}).collect(Collectors.toList());
     }
 
     @Override
-    public RoleDTO findById(Long id) {
-        Role role = roleRepository.findById(id).get();
-        return roleMapper.convertToDTO(role);
+    public RoleDTO findById(Long id) throws TaskManagementException {
+        Role role = roleRepository.findById(id).orElseThrow(()->new TaskManagementException("Role does not exist"));
+        return mapperUtil.convert(role, new RoleDTO());
     }
 }

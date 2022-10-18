@@ -2,12 +2,11 @@ package com.taskmanagementrest.implementation;
 
 
 import com.taskmanagementrest.dto.ProjectDTO;
-import com.taskmanagementrest.dto.UserDTO;
 import com.taskmanagementrest.entity.Project;
 import com.taskmanagementrest.entity.User;
 import com.taskmanagementrest.enums.Status;
 import com.taskmanagementrest.exception.TaskManagementException;
-import com.taskmanagementrest.mapper.MapperUtil;
+import com.taskmanagementrest.util.MapperUtil;
 import com.taskmanagementrest.repository.ProjectRepository;
 import com.taskmanagementrest.repository.UserRepository;
 import com.taskmanagementrest.service.ProjectService;

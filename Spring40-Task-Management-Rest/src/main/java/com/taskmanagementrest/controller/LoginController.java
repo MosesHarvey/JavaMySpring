@@ -3,25 +3,24 @@ package com.taskmanagementrest.controller;
 
 
 import com.taskmanagementrest.annotation.DefaultExceptionMessage;
-import com.taskmanagementrest.dto.MailDTO;
 import com.taskmanagementrest.dto.UserDTO;
 import com.taskmanagementrest.entity.ConfirmationToken;
 import com.taskmanagementrest.entity.ResponseWrapper;
 import com.taskmanagementrest.entity.User;
 import com.taskmanagementrest.entity.common.AuthenticationRequest;
 import com.taskmanagementrest.exception.TaskManagementException;
-import com.taskmanagementrest.mapper.MapperUtil;
+import com.taskmanagementrest.util.MapperUtil;
 import com.taskmanagementrest.service.ConfirmationTokenService;
 import com.taskmanagementrest.service.UserService;
 import com.taskmanagementrest.util.JWTUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.AccessDeniedException;
 
 
 @RestController
@@ -46,7 +45,7 @@ public class LoginController {
     @PostMapping("/authenticate")
     @DefaultExceptionMessage(defaultMessage = "Bad Credentials")
     @Operation(summary = "Login to application")
-    public ResponseEntity<ResponseWrapper>doLogin(@RequestBody AuthenticationRequest authenticationRequest) throws TaskManagementException {
+    public ResponseEntity<ResponseWrapper>doLogin(@RequestBody AuthenticationRequest authenticationRequest) throws TaskManagementException, AccessDeniedException {
        String password = authenticationRequest.getPassword();
        String username = authenticationRequest.getUsername();
 

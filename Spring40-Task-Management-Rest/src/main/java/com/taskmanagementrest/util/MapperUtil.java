@@ -1,4 +1,4 @@
-package com.taskmanagementrest.mapper;
+package com.taskmanagementrest.util;
 
 
 import org.modelmapper.ModelMapper;

@@ -8,23 +8,19 @@ import com.taskmanagementrest.entity.ConfirmationToken;
 import com.taskmanagementrest.entity.ResponseWrapper;
 import com.taskmanagementrest.entity.User;
 import com.taskmanagementrest.exception.TaskManagementException;
-import com.taskmanagementrest.implementation.ConfirmationTokenServiceImpl;
-import com.taskmanagementrest.mapper.MapperUtil;
+import com.taskmanagementrest.util.MapperUtil;
 import com.taskmanagementrest.service.ConfirmationTokenService;
 import com.taskmanagementrest.service.RoleService;
 import com.taskmanagementrest.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 
@@ -74,7 +70,7 @@ public class UserController {
     @DefaultExceptionMessage(defaultMessage = "Something went wrong, try again")
     @Operation(summary = "Read a User")
     // admin can see other's profile, current user can see his/her own profile
-    public ResponseEntity<ResponseWrapper>readByUserName(@PathVariable("username") String username){
+    public ResponseEntity<ResponseWrapper>readByUserName(@PathVariable("username") String username) throws AccessDeniedException {
 
 
         UserDTO userDTO = userService.findByUserName(username);
@@ -88,7 +84,7 @@ public class UserController {
     @PutMapping("/update")
     @Operation(summary = "Update a User")
     @PreAuthorize("hasAuthority('Admin')")
-    public ResponseEntity<ResponseWrapper> updateUser(@RequestBody UserDTO user) throws TaskManagementException {
+    public ResponseEntity<ResponseWrapper> updateUser(@RequestBody UserDTO user) throws TaskManagementException, AccessDeniedException {
 
         UserDTO updateUser = userService.update(user);
 

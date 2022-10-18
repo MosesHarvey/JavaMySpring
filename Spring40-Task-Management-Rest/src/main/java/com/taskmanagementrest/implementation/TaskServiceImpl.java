@@ -8,7 +8,7 @@ import com.taskmanagementrest.entity.Task;
 import com.taskmanagementrest.entity.User;
 import com.taskmanagementrest.enums.Status;
 import com.taskmanagementrest.exception.TaskManagementException;
-import com.taskmanagementrest.mapper.MapperUtil;
+import com.taskmanagementrest.util.MapperUtil;
 import com.taskmanagementrest.repository.TaskRepository;
 import com.taskmanagementrest.repository.UserRepository;
 import com.taskmanagementrest.service.TaskService;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
