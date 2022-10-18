@@ -1,69 +1,89 @@
 package com.taskmanagementrest.controller;
 
 
+import com.taskmanagementrest.annotation.DefaultExceptionMessage;
+import com.taskmanagementrest.dto.MailDTO;
 import com.taskmanagementrest.dto.UserDTO;
+import com.taskmanagementrest.entity.ConfirmationToken;
+import com.taskmanagementrest.entity.ResponseWrapper;
+import com.taskmanagementrest.entity.User;
 import com.taskmanagementrest.exception.TaskManagementException;
+import com.taskmanagementrest.implementation.ConfirmationTokenServiceImpl;
+import com.taskmanagementrest.mapper.MapperUtil;
+import com.taskmanagementrest.service.ConfirmationTokenService;
 import com.taskmanagementrest.service.RoleService;
 import com.taskmanagementrest.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+
+@RestController
 @RequestMapping("/user")
+@Tag(name ="User Controller", description = "User API")
 public class UserController {
-    @Lazy
-    @Autowired
-    RoleService roleService;
-    @Lazy
-    @Autowired
-    UserService userService;
 
-    @GetMapping({"/create", "/add", "/initialize"})
-    public String createUser(Model model) {
+    @Value("${app.local-url}")
+    private String BASE_URL;
 
-        model.addAttribute("user", new UserDTO());
-        model.addAttribute("roles", roleService.listAllRoles());
-        model.addAttribute("users", userService.listAllUsers());
+    private UserService userService;
+    private MapperUtil mapperUtil;
+    private ConfirmationTokenService confirmationTokenService;
+    private RoleService roleService;
 
-        return "/user/user-create";
+
+    public UserController(UserService userService, MapperUtil mapperUtil, ConfirmationTokenService confirmationTokenService, RoleService roleService) {
+        this.userService = userService;
+        this.mapperUtil = mapperUtil;
+        this.confirmationTokenService = confirmationTokenService;
+        this.roleService = roleService;
     }
 
-    @PostMapping("/create")
-    public String insertUser(UserDTO user, Model model) throws TaskManagementException {
+    @DefaultExceptionMessage(defaultMessage = "Something went wrong, try again")
+    @PostMapping("/create-user")
+    @Operation(summary = "Crate new account")
+    private ResponseEntity<ResponseWrapper> doRegister(@RequestBody UserDTO user) throws TaskManagementException {
 
-        userService.save(user);
+        UserDTO createUser = userService.save(user);
+        sendEmail(createEmail(createUser));
 
-        return "redirect:/user/create";   // directs to request, not to the view
-
+        return ResponseEntity.ok(new ResponseWrapper("User has been created", createUser));
     }
 
-    @GetMapping("/update/{username}")
-    public String editUser(@PathVariable("username") String username, Model model) {
-        model.addAttribute("user", userService.findByUserName(username));
-        model.addAttribute("users", userService.listAllUsers());
-        model.addAttribute("roles", roleService.listAllRoles());
-        return "/user/update";
+    private MailDTO createEmail(UserDTO userDTO) {
+
+        User user =mapperUtil.convert(userDTO, new User());
+        ConfirmationToken confirmationToken = new ConfirmationToken(user);
+        confirmationToken.setDeleted(false);
+
+        ConfirmationToken createdConfirmationToken = confirmationTokenService.save(confirmationToken);
+
+        return MailDTO.builder()
+                .emailTo(user.getUserName())
+                .token(createdConfirmationToken.getToken())
+                .subject("Confirm Registration")
+                .message("To Confirm your account, please click here")
+                .url(BASE_URL + "/confirmation?token=")
+                .build();
     }
 
-    @PostMapping("/update/{username}")
-    public String updateUser(@PathVariable("username") String username, UserDTO user, Model model) {
+    private void sendEmail(MailDTO mailDTO) {
 
-        userService.update(user);
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(mailDTO.getEmailTo());
+        mailMessage.setSubject(mailDTO.getSubject());
+        mailMessage.setText(mailDTO.getMessage()+mailDTO.getUrl()+mailDTO.getToken());
 
-        return "redirect:/user/create";
+        confirmationTokenService.sendEmail(mailMessage);
     }
 
-    @GetMapping("/delete/{username}")
-    public String deleteUser(@PathVariable("username") String username) throws TaskManagementException {
-        userService.delete(username);
-        return "redirect:/user/create";
-    }
 
 
 }
