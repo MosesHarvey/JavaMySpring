@@ -1,46 +1,45 @@
-server:
-  port: 9090
-spring:
-  application:
-    name: spring-rest-security
-  profiles:
-   active: default
-  datasource:
-    url: jdbc:postgresql://localhost:5432/mapping
-    username: postgres
-    password: admin
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    properties:
-      hibernate:
-          dialect: org.hibernate.dialect.PostgreSQLDialect
-          ddl-auto: create
-      show-sql: true
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    properties:
-      transport:
-        protocol: smtp
-      smtp:
-        starttls:
-          enabled: true
-          required: true
-        auth: true
-        connectiontimeout: 5000
-        timeout: 5000
-        writetimeout: 5000
-    username: admin.admin@gmail.com
-    password: Abc123
-#spring.sql.init.mode: always
-spring:sql:init:data-locations: classpath:data.sql
-
-
-security:
- jwt:
-    secret-key: moses
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-
-
+#server:
+#  port: 9090
+#spring:
+#  application:
+#    name: spring-rest-security
+#  profiles:
+#   active: default
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/mapping
+#    username: postgres
+#    password: admin
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    properties:
+#      hibernate:
+#          dialect: org.hibernate.dialect.PostgreSQLDialect
+#          ddl-auto: create
+#      show-sql: true
+#  mail:
+#    host: smtp.gmail.com
+#    port: 587
+#    properties:
+#      transport:
+#        protocol: smtp
+#      smtp:
+#        starttls:
+#          enabled: true
+#          required: true
+#        auth: true
+#        connectiontimeout: 5000
+#        timeout: 5000
+#        writetimeout: 5000
+#    username: admin.admin@gmail.com
+#    password: Abc123
+##spring.sql.init.mode: always
+#spring:sql:init:data-locations: classpath:data.sql
+#
+#security:
+# jwt:
+#    secret-key: moses
+#springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+#
+#
