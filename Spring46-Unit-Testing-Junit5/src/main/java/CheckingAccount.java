@@ -30,4 +30,10 @@ public class CheckingAccount {
 
         return  balance;
     }
+
+    public void withdraw_branch(double amount, boolean branch){
+        if(amount>500 && !branch) throw new IllegalArgumentException();
+    }
+
+
 }
