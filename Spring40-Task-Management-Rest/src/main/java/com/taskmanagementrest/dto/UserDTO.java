@@ -4,15 +4,13 @@ package com.taskmanagementrest.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.taskmanagementrest.enums.Gender;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @JsonIgnoreProperties(value = {"hibernateInitializer"}, ignoreUnknown = true)
 public class UserDTO {
 

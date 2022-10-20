@@ -14,7 +14,7 @@ public class LoggingAspect {
 
     Logger log = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Pointcut("execution(* com.taskmanagementrest.controller.ProjectContoller.*(..)) || execution(* com.taskmanagementrest.controller.TaskController.*(..))")
+    @Pointcut("execution(* com.taskmanagementrest.controller.ProjectController.*(..)) || execution(* com.taskmanagementrest.controller.TaskController.*(..))")
     private void anyControllerOperation(){}
 
     @Before("anyControllerOperation()")

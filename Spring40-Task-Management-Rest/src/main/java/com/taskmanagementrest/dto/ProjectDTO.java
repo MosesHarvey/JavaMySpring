@@ -3,10 +3,7 @@ package com.taskmanagementrest.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.taskmanagementrest.enums.Status;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -15,6 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @JsonIgnoreProperties(value = {"hibernateInitializer"}, ignoreUnknown = true)
 public class ProjectDTO {
     private Long id;
