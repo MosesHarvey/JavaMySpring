@@ -17,6 +17,12 @@ public class StudentController {
   @Autowired
   private  StudentService studentService;
 
+  @GetMapping("/")
+  Student getStudent_service(){
+    Student student = new Student("Mike", "Smith", 23);
+    return student;
+  }
+
   @GetMapping("/all")
   List<Student> getStudents(){
       return studentService.getStudent_Data();
