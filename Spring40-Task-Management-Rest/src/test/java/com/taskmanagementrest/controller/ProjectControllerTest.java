@@ -82,6 +82,7 @@ class ProjectControllerTest {
 
     }
 
+    // test post
     @Test void givenToken_createProject() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                 .post("/api/v1/project/create")
@@ -90,6 +91,22 @@ class ProjectControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("projectCode").isNotEmpty());
+    }
+
+
+    @Test
+    public void givenToken_updateProject() throws Exception {
+    projectDTO.setId(2L);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .put("/api/v1/project/update")
+                        .header("Authorization", token)
+                        .content(toJsonString(projectDTO))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                        .andExpect(status().isOk())
+                        .andExpect(MockMvcResultMatchers.jsonPath("message").value("Project has been updated successfully"));
+
     }
 
     protected String toJsonString(final Object obj){
@@ -103,6 +120,9 @@ class ProjectControllerTest {
         }
 
     }
+
+
+
 
 
 }
