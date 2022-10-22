@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private TaskService taskService;
 
+    @Lazy
     @Autowired
     private PasswordEncoder passwordEncoder;
 

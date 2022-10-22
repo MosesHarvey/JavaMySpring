@@ -3,6 +3,7 @@ package com.etask.mapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Type;
@@ -10,6 +11,7 @@ import java.lang.reflect.Type;
 @Component
 public class MapperUtil {
 
+    @Lazy
     @Autowired
     private ModelMapper modelMapper;
 

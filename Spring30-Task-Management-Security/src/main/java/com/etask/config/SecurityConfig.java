@@ -31,20 +31,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/project/**").hasAuthority("Manager")
                 .antMatchers("/task/employee/**").hasAuthority("Employee")
                 .antMatchers("/task/**").hasAuthority("Manager")
-                .antMatchers(
-                        "/",
-                        "/login",
-                        "/fragments/**",
-                        "/assets/**",
-                        "/images/**"
-                ).permitAll()
+                .antMatchers("/", "/login", "/fragments/**", "/assets/**", "/images/**").permitAll()
                 .and()
                 .formLogin()
                     .loginPage("/login")
                   //  .defaultSuccessUrl("/welcome")
                     .successHandler(authSuccessHandler)
-                    .failureUrl("/login?error=true")
-                    .permitAll()
+                   .failureUrl("/login?error=true")
+                .permitAll()
                 .and()
                 .logout()
                      .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -52,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .rememberMe()
                    .tokenValiditySeconds(120)
-                   .key("Abc1")
+                   .key("mosesSecret")
                 .userDetailsService(securityService);
     }
 }

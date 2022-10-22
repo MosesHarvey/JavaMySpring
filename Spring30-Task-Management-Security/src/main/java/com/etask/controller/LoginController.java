@@ -7,17 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping
 public class LoginController {
 
-    @GetMapping({"/login", "/"})
+    @RequestMapping(value = {"/login", "/"})
     public String login(){
         return "login";
     }
 
 
-    @GetMapping("/welcome")
-     public String welcome(){
+    @RequestMapping("/welcome")
+    public String welcome(){
        return "welcome";
     }
 
