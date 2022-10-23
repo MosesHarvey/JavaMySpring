@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Event Form</title>
+</head>
+<body>
+
+<div class="container">
+
+
+    <h2 th:align="center">Event List</h2>
+
+    <div class="actions">
+        <a th:href="@{/event/form}"><button type="button" class="btn btn-secondary"> ≡ Back To Form</button></a>
+    </div>
+
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="event : ${events}">
+                <td th:text="${event.id}"></td>
+                <td th:text="${event.name}"></td>
+                <td th:text="${event.location}"></td>
+                <td th:text="${#temporals.format(event.startDate, 'dd/MM/yyyy')}"></td>
+                <td th:text="${#temporals.format(event.endDate, 'dd/MM/yyyy')}"></td>
+
+
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--&lt;!&ndash;-->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>
