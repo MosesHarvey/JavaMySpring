@@ -35,6 +35,12 @@
                                     <form class="needs-validation" novalidate th:action="@{/user/update/{id}(id=${user.userName})}" method="post" th:object="${user}">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6">
+                                                <div class="form-group" hidden>
+                                                    <label for="id" class="col-form-label">ID</label>
+                                                    <input id="id" type="text" placeholder="ID" th:field="*{id}" class="form-control" required>
+                                                    <div class="invalid-feedback">ID </div>
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label for="firstname" class="col-form-label">First Name</label>
                                                     <input id="firstname" type="text" placeholder="First Name" th:field="*{firstName}" class="form-control" required>
@@ -84,7 +90,7 @@
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label for="re-password" class="col-form-label">Retype Password</label>
-                                                    <input id="re-password" type="password" placeholder="Confirm Your Password" th:field="*{password}" class="form-control" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
+                                                    <input id="re-password" type="password" placeholder="Confirm Your Password"  class="form-control" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
                                                     <div class="invalid-feedback">Please Enter same Password above </div>
                                                 </div>
                                             </div>
@@ -108,6 +114,7 @@
                                                 <div class="form-group">
                                                     <label>Choose a Role</label>
                                                     <select th:field="*{role}" class="custom-select" required="required">
+                                                        <option th:text="${user.role.description}" th:value="${user.role.id}"></option>
                                                         <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.description}"></option>
                                                     </select>
                                                 </div>
@@ -151,6 +158,7 @@
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
+                                                <th scope="col" hidden>ID</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Email(username)</th>
                                                 <th scope="col">Gender</th>
@@ -161,6 +169,7 @@
                                             </thead>
                                             <tbody>
                                             <tr th:each="user : ${users}">
+                                                <td th:text="${user.id}" hidden></td>
                                                 <td th:text="${user.firstName + ' '+ user.lastName}"></td>
                                                 <td th:text="${user.userName}"></td>
                                                 <td th:text="${user.gender}"></td>

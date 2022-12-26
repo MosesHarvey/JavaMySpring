@@ -56,7 +56,7 @@ public class ProjectServiceImpl implements ProjectService {
         dto.setProjectStatus(Status.OPEN);
         Project obj = projectMapper.convertToEntity(dto);
         obj.setAssignedManager(userMapper.convertToEntity(dto.getAssignedManager()));
-        Project project = projectRepository.save(obj);
+        projectRepository.save(obj);
     }
 
     @Override
@@ -99,7 +99,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public List<ProjectDTO> listAllProjectDetails() {
 
-        UserDTO currentUserDTO = userService.findByUserName("jahegovi@mailinator.com");
+        UserDTO currentUserDTO = userService.findByUserName("tojig@mailinator.com");
         User user = userMapper.convertToEntity(currentUserDTO);
        List<Project>list=projectRepository.findAllByAssignedManager(user);
 

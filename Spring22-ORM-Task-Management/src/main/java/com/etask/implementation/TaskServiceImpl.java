@@ -79,11 +79,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void delete(Long id) {
-        Optional<Task> foundTask = taskRepository.findById(id);
-        if(foundTask.isPresent()){
-            foundTask.get().setDeleted(true);
-            taskRepository.save(foundTask.get());
-        }
+//        Optional<Task> foundTask = taskRepository.findById(id);
+//        if(foundTask.isPresent()){
+//            foundTask.get().setDeleted(true);
+//            taskRepository.save(foundTask.get());
+//        }
+        taskRepository.changeIsDeletedById(id);
 
     }
 
@@ -113,7 +114,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<TaskDTO> listAllTasksByStatusIsNot(Status status) {
 
-        User user = userRepository.findByUserName("admin@admin.com");
+        User user = userRepository.findByUserName("fuhab@mailinator.com");
         List<Task>list = taskRepository.findAllByTaskStatusIsNotAndAssignedEmployee(status, user);
 
         return list.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
@@ -131,7 +132,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<TaskDTO> listAllTaskByStatus(Status status) {
 
-        User user = userRepository.findByUserName("admin@admin.com");
+        User user = userRepository.findByUserName("fuhab@mailinator.com");
         List<Task>list = taskRepository.findAllByTaskStatusIsNotAndAssignedEmployee(status, user);
         return list.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
     }
@@ -140,6 +141,11 @@ public class TaskServiceImpl implements TaskService {
     public List<TaskDTO> readAllByEmployee(User assignedEmployee) {
         List<Task>task = taskRepository.findAllByAssignedEmployee(assignedEmployee);
         return task.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public void completeTaskById(Long id) {
+        taskRepository.completeTaskById(id);
     }
 
 

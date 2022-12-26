@@ -84,7 +84,7 @@
                                             <div class="col-sm-6 col-md-6">
                                                 <div class="form-group">
                                                     <label for="re-password" class="col-form-label">Retype Password</label>
-                                                    <input id="re-password" type="password" placeholder="Confirm Your Password" th:field="*{password}" class="form-control" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
+                                                    <input id="re-password" type="password" placeholder="Confirm Your Password"  class="form-control" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" required>
                                                     <div class="invalid-feedback">Please Enter same Password above </div>
                                                 </div>
                                             </div>
@@ -100,7 +100,6 @@
                                                     <label class="custom-control custom-radio custom-control-inline">
                                                         <input type="radio" name="radio-inline" th:field="*{gender}" th:value="FEMALE" class="custom-control-input"><span class="custom-control-label">Female</span>
                                                     </label>
-
                                                 </div>
                                             </div>
 

@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/task")
@@ -72,12 +70,18 @@ public class TaskController{
         return "redirect:/task/create";
     }
 
-    @GetMapping("/employee")
+    @GetMapping("/pending-tasks")
     public String edit(Model model){
         List<TaskDTO>tasks =  taskService.listAllTasksByStatusIsNot(Status.COMPLETE);
         model.addAttribute("tasks",tasks);
 
-        return "/task/employee-tasks";
+        return "/employee/pending-tasks";
+    }
+
+    @GetMapping("/{id}/complete")
+    public String completeTask(@PathVariable("id") Long id){
+        taskService.completeTaskById(id);
+        return "redirect:/task/pending-tasks";
     }
 
     @GetMapping("/employee/edit/{id}")
@@ -100,12 +104,12 @@ public class TaskController{
      return "redirect:/task/employee";
     }
 
-    @GetMapping("/employee/archive")
+    @GetMapping("/archive")
     public String employeeArchive(Model model){
 
         List<TaskDTO>tasks = taskService.listAllTaskByStatus(Status.COMPLETE);
         model.addAttribute("tasks", tasks);
-        return "/task/employee-archive";
+        return "/employee/archive";
 
 
     }

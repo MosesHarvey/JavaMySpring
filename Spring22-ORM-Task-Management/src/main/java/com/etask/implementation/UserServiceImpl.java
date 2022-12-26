@@ -59,13 +59,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO update(UserDTO dto) {
 
-        User user = userRepository.findByUserName(dto.getUserName());
+//        User user = userRepository.findByUserName(dto.getUserName());
         // map update user tp dto to entity
         User convertedUser = mapperUtil.convert(dto, new User());
         // set id to converted user
-        convertedUser.setId(user.getId());
+       // convertedUser.setId(user.getId());
         // save updated user
         userRepository.save(convertedUser);
+        dto.setId(null);
         return findByUserName(dto.getUserName());
     }
 
@@ -77,7 +78,7 @@ public class UserServiceImpl implements UserService {
          throw new TaskManagementException("User does not exist");
      }
      if(!checkIfUserCanBeDeleted(user)){
-         throw new TaskManagementException("User can not be deleted. It is linked by a project of task");
+         throw new TaskManagementException("User can not be deleted. It is linked by a project or task");
 
      }
 

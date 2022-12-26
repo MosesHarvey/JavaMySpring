@@ -1,6 +1,7 @@
 package com.etask.dto;
 
 import com.etask.enums.Status;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
+@AllArgsConstructor
 public class TaskDTO {
 
     private Long id;
@@ -21,7 +23,7 @@ public class TaskDTO {
     private Status taskStatus;
     private LocalDate assignedDate;
 
-
-
-
+    public TaskDTO(Long id) {
+        this.id = UUID.randomUUID().getMostSignificantBits();
+    }
 }
