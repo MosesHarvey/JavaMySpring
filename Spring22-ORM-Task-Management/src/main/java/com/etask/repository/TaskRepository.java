@@ -24,7 +24,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     List<Task> findAllByProject(Project project);
     List<Task>findAllByTaskStatusIsNotAndAssignedEmployee(Status status, User user);
-    List<Task>findAllByTaskStatusAndAndAssignedEmployee(Status status, User user);
+
     List<Task> findAllByProjectAssignedManager(User user);
     List<Task>findAllByAssignedEmployee(User user);
 
@@ -39,4 +39,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Transactional
     @Query(value = "update tasks set task_status='COMPLETE' where id=?1", nativeQuery = true)
     void completeTaskById(Long id);
+
+    List<Task> findAllByTaskStatusAndAssignedEmployee(Status status, User user);
 }

@@ -133,7 +133,7 @@ public class TaskServiceImpl implements TaskService {
     public List<TaskDTO> listAllTaskByStatus(Status status) {
 
         User user = userRepository.findByUserName("fuhab@mailinator.com");
-        List<Task>list = taskRepository.findAllByTaskStatusIsNotAndAssignedEmployee(status, user);
+        List<Task>list = taskRepository.findAllByTaskStatusAndAssignedEmployee(status, user);
         return list.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
     }
 
