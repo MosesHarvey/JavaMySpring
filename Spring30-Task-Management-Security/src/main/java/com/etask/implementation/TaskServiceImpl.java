@@ -144,6 +144,12 @@ public class TaskServiceImpl implements TaskService {
         return task.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
     }
 
+    @Override
+    public void completeTaskById(Long id) {
+        taskRepository.completeTaskById(id);
+    }
+
+
 
     public List<TaskDTO> listAllTasksByProjectManager() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();

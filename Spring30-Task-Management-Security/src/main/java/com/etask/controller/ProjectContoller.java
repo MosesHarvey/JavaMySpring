@@ -2,9 +2,6 @@ package com.etask.controller;
 
 
 import com.etask.dto.ProjectDTO;
-import com.etask.dto.TaskDTO;
-import com.etask.dto.UserDTO;
-import com.etask.enums.Status;
 import com.etask.service.ProjectService;
 import com.etask.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/project")
@@ -75,7 +71,7 @@ public class ProjectContoller {
         return "redirect:/project/create";
     }
 
-    @GetMapping("/manager/complete")
+    @GetMapping("/status")
     public String getProjectsByManager(Model model) {
 
        List<ProjectDTO> projects = projectService.listAllProjectDetails();
@@ -92,6 +88,8 @@ public class ProjectContoller {
         return "redirect:/project/manager/project-status";
 
     }
+
+
 
 
 }

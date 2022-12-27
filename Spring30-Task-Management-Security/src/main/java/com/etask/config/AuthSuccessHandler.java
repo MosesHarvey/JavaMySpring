@@ -23,7 +23,7 @@ public class AuthSuccessHandler implements AuthenticationSuccessHandler {
 
         if (roles.contains("Admin")) {response.sendRedirect("/user/create");}
         if (roles.contains("Manager")) {response.sendRedirect("/task/create");}
-        if (roles.contains("Employee")) {response.sendRedirect("/task/employee");}
+        if (roles.contains("Employee")) {response.sendRedirect("/task/pending-tasks");}
     }
 
 }

@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/task")
@@ -32,7 +30,7 @@ public class TaskController{
     public String createTask(Model model){
 
         model.addAttribute("task", new TaskDTO());
-        model.addAttribute("projects", projectService.listAllNotCompleteProjects());
+        model.addAttribute("projects", projectService.listAllProjects());
         model.addAttribute("employees", userService.listAllByRole("employee"));
 
         model.addAttribute("tasks", taskService.listAllTasks());
@@ -59,7 +57,7 @@ public class TaskController{
     public String editTask(@PathVariable("id") Long id, Model model){
 
         model.addAttribute("task",taskService.findById(id));
-        model.addAttribute("projects", projectService.listAllNotCompleteProjects());
+        model.addAttribute("projects", projectService.listAllProjects());
         model.addAttribute("employees", userService.listAllByRole("employee"));
         model.addAttribute("tasks",taskService.listAllTasks());
 
@@ -72,12 +70,18 @@ public class TaskController{
         return "redirect:/task/create";
     }
 
-    @GetMapping("/employee")
+    @GetMapping("/pending-tasks")
     public String edit(Model model){
         List<TaskDTO>tasks =  taskService.listAllTasksByStatusIsNot(Status.COMPLETE);
         model.addAttribute("tasks",tasks);
 
-        return "/task/employee-tasks";
+        return "/employee/pending-tasks";
+    }
+
+    @GetMapping("/{id}/complete")
+    public String completeTask(@PathVariable("id") Long id){
+        taskService.completeTaskById(id);
+        return "redirect:/task/pending-tasks";
     }
 
     @GetMapping("/employee/edit/{id}")
@@ -87,7 +91,7 @@ public class TaskController{
 
         model.addAttribute("task",task);
         model.addAttribute("users", userService.listAllByRole("employee"));
-        model.addAttribute("projects", projectService.listAllNotCompleteProjects());
+        model.addAttribute("projects", projectService.listAllProjects());
         model.addAttribute("tasks", tasks);
         model.addAttribute("statuses", Status.values());
 
@@ -100,12 +104,12 @@ public class TaskController{
      return "redirect:/task/employee";
     }
 
-    @GetMapping("/employee/archive")
+    @GetMapping("/archive")
     public String employeeArchive(Model model){
 
         List<TaskDTO>tasks = taskService.listAllTaskByStatus(Status.COMPLETE);
         model.addAttribute("tasks", tasks);
-        return "/task/employee-archive";
+        return "/employee/archive";
 
 
     }
