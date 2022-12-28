@@ -26,6 +26,8 @@ public class ProjectDTO {
     private Status projectStatus;
     private int completeTaskCounts;
     private int inCompleteTaskCounts;
+    private int totalTaskCounts;
+
 
 
 }

@@ -105,6 +105,11 @@ public class TaskServiceImpl implements TaskService {
 
     }
 
+    @Override
+    public int totalTasks(String projectCode) {
+        return taskRepository.totalTasks(projectCode);
+    }
+
     public List<TaskDTO>listAllByProject(ProjectDTO project){
         List<Task>list = taskRepository.findAllByProject(projectMapper.convertToEntity(project));
         return list.stream().map(obj->{return taskMapper.convertToDTO(obj);
@@ -134,7 +139,7 @@ public class TaskServiceImpl implements TaskService {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
         User user = userRepository.findByUserName(username);
-        List<Task>list = taskRepository.findAllByTaskStatusIsNotAndAssignedEmployee(status, user);
+        List<Task>list = taskRepository.findAllByTaskStatusAndAssignedEmployee(status, user);
         return list.stream().map(taskMapper::convertToDTO).collect(Collectors.toList());
     }
 

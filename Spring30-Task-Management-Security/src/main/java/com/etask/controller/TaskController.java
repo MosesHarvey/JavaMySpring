@@ -108,7 +108,7 @@ public class TaskController{
     public String employeeArchive(Model model){
 
         List<TaskDTO>tasks = taskService.listAllTaskByStatus(Status.COMPLETE);
-        model.addAttribute("tasks", tasks);
+        model.addAttribute("tasks1", tasks);
         return "/employee/archive";
 
 

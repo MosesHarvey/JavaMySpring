@@ -20,6 +20,7 @@ public interface TaskService {
 
     int totalNonCompletedTasks(String projectCode);
     int totalCompletedTasks(String projectCode);
+    int totalTasks(String projectCode);
 
     List<TaskDTO>listAllByProject(ProjectDTO project);
     List<TaskDTO>listAllTasksByStatusIsNot(Status status);

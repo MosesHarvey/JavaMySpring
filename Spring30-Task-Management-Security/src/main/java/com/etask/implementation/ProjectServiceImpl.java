@@ -110,6 +110,7 @@ public class ProjectServiceImpl implements ProjectService {
             ProjectDTO obj = projectMapper.convertToDto(project);
             obj.setInCompleteTaskCounts(taskService.totalNonCompletedTasks(project.getProjectCode()));
             obj.setCompleteTaskCounts(taskService.totalCompletedTasks(project.getProjectCode()));
+            obj.setTotalTaskCounts(taskService.totalTasks(project.getProjectCode()));
         return obj;}).collect(Collectors.toList());
     }
 
